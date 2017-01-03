@@ -29,12 +29,13 @@ Frontpanel PCB
 Here's the first version of the new frontpanel PCB.
 
 ![frontpanel](img/stc1000p_steroids_schematics.png)<br>
-*Eagle schematic of the Frontpanel with an STM8s105C6 µC*
+*Eagle schematic of the Frontpanel with an STM8S105C6 µC*
 
 ![frontpanel](img/stc1000p_steroids_pcb.png)<br>
 *Eagle PCB of the Frontpanel, v01*
 
-Current status: files sent to a PCB manufacturer for PCB production. I hope to have received the first batch in about a month.
+![frontpanel](img/Frontpanel_pcb.jpg)<br>
+*PCBs as received from the PCB manufacturer.*
 
 Backplane PCB
 ----------
