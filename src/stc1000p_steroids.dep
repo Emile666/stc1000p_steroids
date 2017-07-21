@@ -1,0 +1,41 @@
+;	STMicroelectronics dependencies file
+
+[Version]
+Keyword=ST7Project
+Number=1.3
+
+[Root.Source Files.adc.c.Config.0]
+ExternDep= adc.c  "C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Hstm8\mods0.h" adc.h  stdint.h "C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Hstm8\stdbool.h"  stc1000p.h  "C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Hstm8\iostm8s105.h"  delay.h
+
+[Root.Source Files.delay.c.Config.0]
+ExternDep= delay.c  "C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Hstm8\mods0.h" delay.h  stdint.h stc1000p.h  "C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Hstm8\iostm8s105.h"
+
+[Root.Source Files.eep.c.Config.0]
+ExternDep= eep.c  "C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Hstm8\mods0.h" eep.h  stc1000p.h  "C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Hstm8\iostm8s105.h"  stdint.h delay.h
+
+[Root.Source Files.i2c.c.Config.0]
+ExternDep= i2c.c  "C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Hstm8\mods0.h" i2c.h  "C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Hstm8\iostm8s105.h"  "C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Hstm8\stdbool.h" stdint.h  stc1000p.h delay.h
+
+[Root.Source Files.nrf24.c.Config.0]
+ExternDep= nrf24.c  "C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Hstm8\mods0.h" nrf24.h  nrf24l01.h stdint.h nrf24_stm8_specific.h  "C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Hstm8\iostm8s105.h" spi.h  "C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Hstm8\stdbool.h"
+
+[Root.Source Files.nrf24_stm8_specific.c.Config.0]
+ExternDep= nrf24_stm8_specific.c  "C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Hstm8\mods0.h"  nrf24_stm8_specific.h  "C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Hstm8\iostm8s105.h" spi.h  "C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Hstm8\stdbool.h" stdint.h
+
+[Root.Source Files.pid.c.Config.0]
+ExternDep= pid.c  "C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Hstm8\mods0.h" pid.h  stdint.h
+
+[Root.Source Files.scheduler.c.Config.0]
+ExternDep= scheduler.c  "C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Hstm8\mods0.h"  scheduler.h stdint.h  "C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Hstm8\stdbool.h"  "C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Hstm8\string.h"
+
+[Root.Source Files.spi.c.Config.0]
+ExternDep= spi.c  "C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Hstm8\mods0.h" spi.h  "C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Hstm8\iostm8s105.h"  "C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Hstm8\stdbool.h" stdint.h  stc1000p.h delay.h
+
+[Root.Source Files.stc1000p.c.Config.0]
+ExternDep= stc1000p.c  "C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Hstm8\mods0.h" stc1000p.h  "C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Hstm8\iostm8s105.h"  stdint.h delay.h stc1000p_lib.h  "C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Hstm8\stdbool.h" eep.h  pid.h scheduler.h  "C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Hstm8\string.h" adc.h  i2c.h nrf24.h nrf24l01.h
+
+[Root.Source Files.stc1000p_lib.c.Config.0]
+ExternDep= stc1000p_lib.c  "C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Hstm8\mods0.h"  stc1000p_lib.h stdint.h  "C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Hstm8\stdbool.h"  stc1000p.h  "C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Hstm8\iostm8s105.h"  delay.h eep.h pid.h
+
+[Root.Source Files.stm8_interrupt_vector.c.Config.0]
+ExternDep= stm8_interrupt_vector.c  "C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Hstm8\mods0.h"

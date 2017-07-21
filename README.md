@@ -13,6 +13,12 @@ The **STM8S105C6T6** µC has 32 Kbytes of Flash memory, 1024 bytes of EEPROM and
 
 I designed a new frontpanel PCB that is the exact same size as the current frontpanel PCB. So it fits the housing and connects easily to the backplane PCB.
 
+Software Development Environment
+-----------
+- Cosmic STM8 compiler. A license can be obtained free of charge from Cosmic-software.com. Install this first.
+- ST Visual Develop (STVD). This can be obtained free of charge from st.com
+- A coloured ST-Link V2 USB adapter (which are very cheap to find on ebay)
+
 In order to program this thing, you can't have a code-size limit of 8 Kbytes, so IAR will not do the job. Fortunately, the Cosmic STM8 development environment (IdeaSTM8) has been made available free-of-charge. Just register and download and you have 
 a development environment that nicely supports this device.
 

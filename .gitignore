@@ -17,6 +17,12 @@ $RECYCLE.BIN/
 # Windows shortcuts
 *.lnk
 
+# make and build files
+*.ls
+*.o
+*.lkf
+TAGS*.txt
+
 # =========================
 # Operating System Files
 # =========================

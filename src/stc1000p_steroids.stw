@@ -1,0 +1,12 @@
+;	STMicroelectronics Workspace file
+
+[Version]
+Keyword=ST7Workspace-V0.7
+
+[Project0]
+Filename=stc1000p_steroids.stp
+Dependencies=
+[Options]
+ActiveProject=stc1000p_steroids
+ActiveConfig=Debug
+AddSortedElements=1
