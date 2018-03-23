@@ -58,16 +58,16 @@ Although it is possible to connect the frontpanel PCB directly to an existing ba
 *PCB as received from the PCB manufacturer (allpcb.com).*
 
 There's now a 10 pole terminal-block with the following connections:
-**T2**: connect a temperature sensor to this pin and the +5V pin (same as in original STC1000)
-**+5V**: +5V power-supply voltage (same as in original STC1000)
-**T1**: connect a second temperature sensor to this pin and the +5V pin (same as for Matts firmware)
-**GND**: ground (0 V) connection. 
-**SSR**: SSR output. Connect this to the input line of a solid-state relay. This is a PID controlled output.
-**SCL**: Serial clock-line of the I<sup>2</sup>C interface.
-**SDA**: Serial data-line of the I<sup>2</sup>C interface.
-**OW**: One-wire output. Support a DS18B20 temperature sensor for more accurate readings.
-**RX**: Receive-data pin for the serial communication (UART). This is a 3.3 Volt pin, so do not connect higher voltages!
-**TX**: Transmit-data pin for the serial communication (UART). This is a 3.3 Volt pin, so do not connect higher voltages!
+- **T2**: connect a temperature sensor to this pin and the +5V pin (same as in original STC1000)
+- **+5V**: +5V power-supply voltage (same as in original STC1000)
+- **T1**: connect a second temperature sensor to this pin and the +5V pin (same as for Matts firmware)
+- **GND**: ground (0 V) connection. 
+- **SSR**: SSR output. Connect this to the input line of a solid-state relay. This is a PID controlled output.
+- **SCL**: Serial clock-line of the I<sup>2</sup>C interface.
+- **SDA**: Serial data-line of the I<sup>2</sup>C interface.
+- **OW**: One-wire output. Support a DS18B20 temperature sensor for more accurate readings.
+- **RX**: Receive-data pin for the serial communication (UART). This is a 3.3 Volt pin, so do not connect higher voltages!
+- **TX**: Transmit-data pin for the serial communication (UART). This is a 3.3 Volt pin, so do not connect higher voltages!
 
 Updates
 -------
