@@ -170,10 +170,10 @@ enum menu_enum
 #define EEADR_POWER_ON				(EEADR_MENU_ITEM(rn) + 1)
 
 // These are the bit-definitions in _buttons
-#define BTN_UP	 (0x88)
-#define BTN_DOWN (0x44)
-#define BTN_PWR	 (0x22)
-#define BTN_S	   (0x11)
+#define BTN_PWR	 (0x88)
+#define BTN_S    (0x44)
+#define BTN_UP	 (0x22)
+#define BTN_DOWN (0x11)
 
 // Helpful defines to handle buttons
 #define BTN_IDLE(btn)		  ((_buttons & (btn)) == 0x00)

@@ -67,38 +67,45 @@ extern uint32_t t2_millis;        // needed for delay_msec()
   Purpose  : This routine multiplexes the 4 segments of the 7-segment displays.
              It runs at 1 kHz, so there's a full update after every 4 msec.
   Variables: -
+// PD7 PG1 PG0 PD4 PD3 PD2 PE0 PD0
+//  D   E   F   G   dp  A   C   B 
   Returns  : -
   ---------------------------------------------------------------------------*/
 void multiplexer(void)
 {
     // Disable all 7-segment LEDs and common-cathode pins
-	PD_ODR    &= ~PD_SEG7; // Clear LEDs
-    PE_ODR    &= ~S7_C;    // Clear LEDs
+    PG_ODR    &= ~PG_SEG7; // Clear LEDs
+    PD_ODR    &= ~PD_SEG7; // Clear LEDs
+    PE_ODR    &= ~PE_SEG7; // Clear LEDs
     PC_ODR    |=  CC_ALL;  // Disable common-cathodes
     
     switch (mpx_nr)
     {
         case 0: // output 10s digit
-            PD_ODR |= (led_10 & PD_SEG7);     // Update 7-segments
-            PE_ODR |= ((led_10 >> 1) & S7_C); // Update 7-segment C
+            PG_ODR |= ((led_10 >> 5) & PG_SEG7); // Update 7-segment E+F
+            PD_ODR |= (led_10 & PD_SEG7);        // Update 7-segments
+            PE_ODR |= ((led_10 >> 1) & PE_SEG7); // Update 7-segment C
             PC_ODR &= ~CC_10;    // Enable  common-cathode for 10s
             mpx_nr = 1;
             break;
         case 1: // output 1s digit
-            PD_ODR |= (led_1 & PD_SEG7);     // Update 7-segments
-            PE_ODR |= ((led_1 >> 1) & S7_C); // Update 7-segment C
+            PG_ODR |= ((led_1 >> 5) & PG_SEG7); // Update 7-segment E+F
+            PD_ODR |= (led_1 & PD_SEG7);        // Update 7-segments
+            PE_ODR |= ((led_1 >> 1) & PE_SEG7); // Update 7-segment C
             PC_ODR &= ~CC_1;     // Enable  common-cathode for 1s
             mpx_nr = 2;
             break;
         case 2: // output 01s digit
-            PD_ODR |= (led_01 & PD_SEG7);     // Update 7-segments
-            PE_ODR |= ((led_01 >> 1) & S7_C); // Update 7-segment C
+            PG_ODR |= ((led_01 >> 5) & PG_SEG7); // Update 7-segment E+F
+            PD_ODR |= (led_01 & PD_SEG7);        // Update 7-segments
+            PE_ODR |= ((led_01 >> 1) & PE_SEG7); // Update 7-segment C
             PC_ODR &= ~CC_01;    // Enable common-cathode for 0.1s
             mpx_nr = 3;
             break;
         case 3: // outputs special digits
-            PD_ODR |= (led_e & PD_SEG7);     // Update 7-segments
-            PE_ODR |= ((led_e >> 1) & S7_C); // Update 7-segment C
+            PG_ODR |= ((led_e >> 5) & PG_SEG7); // Update 7-segment E+F
+            PD_ODR |= (led_e & PD_SEG7);        // Update 7-segments
+            PE_ODR |= ((led_e >> 1) & PE_SEG7); // Update 7-segment C
             PC_ODR &= ~CC_e;     // Enable common-cathode for extras
         default: // FALL-THROUGH (less code-size)
             mpx_nr = 0;
@@ -182,43 +189,44 @@ void setup_timer2(void)
   ---------------------------------------------------------------------------*/
 void setup_gpio_ports(void)
 {
-	PA_DDR     |=  (S3 | COOL | HEAT | ALARM); // Set as output
+	PA_DDR     |=  (SSR | COOL | HEAT | ALARM | D433_OUT); // Set as output
 	PA_DDR     &= ~PA_NC;                      // Set unused ports as input
 	PA_CR1     |=  PA_NC;                      // Enable pull-up
-    PA_CR1     |=  (S3 | COOL | HEAT | ALARM); // Set to Push-Pull
-    PA_ODR     &= ~(S3 | COOL | HEAT | ALARM); // Disable PORTA outputs
+    PA_CR1     |=  (SSR | COOL | HEAT | ALARM | D433_OUT); // Set to Push-Pull
+    PA_ODR     &= ~(SSR | COOL | HEAT | ALARM | D433_OUT); // Disable PORTA outputs
 		
-    PB_DDR     |= (IO1 | IO2 | LED1 | LED2 | LED3);  // Set as output
+    PB_DDR     |= (LED1 | LED2 | LED3);  // Set as output
     PB_DDR     &= ~(PB_NC | AD_CHANNELS);            // Set as input
     PB_CR1     |= PB_NC;                             // Enable pull-up
 	PB_CR1     &= ~AD_CHANNELS; // Set to floating-inputs (required by ADC)
-	PB_CR1     |=  (IO1 | IO2 | LED1 | LED2 | LED3); // Set to Push-Pull
-    PB_ODR     &= ~(IO1 | IO2 | LED1 | LED2 | LED3); // Disable PORTB outputs
+	PB_CR1     |=  (LED1 | LED2 | LED3); // Set to Push-Pull
+    PB_ODR     &= ~(LED1 | LED2 | LED3); // Disable PORTB outputs
 		
-    PC_DDR     |=  (SPI_MOSI | SPI_CLK | CC_10 | CC_1 | CC_01 | CC_e); // Set as outputs
-	PC_CR1     |=  (SPI_MOSI | SPI_CLK | CC_10 | CC_1 | CC_01 | CC_e); // Set to Push-Pull
-	PC_CR2     |=  (SPI_MOSI | SPI_CLK);            // Set to 10 MHz
-    PC_ODR     &= ~(SPI_MOSI | SPI_CLK);            // Disable PORTC outputs
-    PC_ODR     |=  (CC_10 | CC_1 | CC_01 | CC_e);   // Disable Common-Cathodes
-    PC_DDR     &= ~SPI_MISO;         // set as Input
-	PC_CR1     &= ~SPI_MISO;         // set to Floating
+    PC_DDR     |=  (SPI_MOSI | SPI_CLK | CC_ALL); // Set as outputs
+	PC_CR1     |=  (SPI_MOSI | SPI_CLK | CC_ALL); // Set to Push-Pull
+	PC_CR2     |=  (SPI_MOSI | SPI_CLK);          // Set to 10 MHz
+    PC_ODR     &= ~(SPI_MOSI | SPI_CLK);          // Disable PORTC outputs
+    PC_ODR     |=  CC_ALL;                        // Disable Common-Cathodes
+    PC_DDR     &= ~SPI_MISO;                      // set as Input
+	PC_CR1     &= ~SPI_MISO;                      // set to Floating
 		
     PD_DDR     |=  PD_SEG7;          // Set 7-segment/key pins as output
     PD_CR1     |=  PD_SEG7;          // Set 7-segment/key pins to Push-Pull
     PD_ODR     &= ~PD_SEG7;          // Turn off all 7-segment/key pins
 
     PE_ODR     |=  (I2C_SCL | I2C_SDA); // Must be set here, or I2C will not work
-    PE_DDR     |=  (SPI_NSS | NRF24_CE | S7_C | I2C_SCL | I2C_SDA); // Set as outputs
+    PE_DDR     |=  (SPI_NSS | NRF24_CE | PE_SEG7 | I2C_SCL | I2C_SDA); // Set as outputs
 	PE_DDR     &= ~PE_NC;               // Set unused ports as input
 	PE_CR1     |=  PE_NC;               // Enable pull-ups
-    PE_CR1     |=  (SPI_NSS | NRF24_CE | S7_C);    // Set to Push-Pull
+    PE_CR1     |=  (SPI_NSS | NRF24_CE | PE_SEG7);    // Set to Push-Pull
 	//PE_CR2     |=  (I2C_SCL | I2C_SDA); // Set speed to 10 MHz
-    PE_ODR     &= ~S7_C;                // Turn off 7-segment C
+    PE_ODR     &= ~PE_SEG7;             // Turn off 7-segment C
     PE_ODR     |=  (SPI_NSS);           // Turn off SPI_NSS
     PE_ODR     &= ~NRF24_CE;            // Set NRF24_CE low
     
-    PG_DDR     &= ~PG_NC;            // Set unused ports as input
-	PG_CR1     |=  PG_NC;            // Enable pull-up
+    PG_DDR     |=  PG_SEG7;      // Set 7-segment/key pins as output
+    PG_CR1     |=  PG_SEG7;      // Set 7-segment/key pins to Push-Pull
+    PG_ODR     &= ~PG_SEG7;      // Turn off all 7-segment/key pins
 } // setup_output_ports()
 
 /*-----------------------------------------------------------------------------
@@ -279,7 +287,7 @@ void pid_to_time(void)
                 if ((htmr > 0) && pwr_on) std_ptt = 1;
             } // if
             else ltmr--; // decrease timer
-            S3_OFF;      // S3 output = 0
+            SSR_OFF;     // SSR output = 0
             break;
         case 1: // ON
             if (htmr == 0)
@@ -288,7 +296,7 @@ void pid_to_time(void)
                 if ((ltmr > 0) || !pwr_on) std_ptt = 0;
             } // if
             else htmr--; // decrease timer
-            S3_ON;       // S3 output = 1
+            SSR_ON;       // SSR output = 1
             break;
     } // switch
 } // pid_to_time()

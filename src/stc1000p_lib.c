@@ -71,7 +71,7 @@ uint16_t curr_dur = 0;          // local counter for temperature duration
 int16_t  pid_out  = 0;          // Output from PID controller in E-1 %
 int16_t  hysteresis;            // th-mode: hysteresis for temp probe ; pid-mode: lower hyst. limit in E-1 %
 int16_t  hysteresis2;           // th-mode: hysteresis for 2nd temp probe ; pid-mode: upper hyst. limit in E-1 %
-uint8_t  portc, portd;          // Needed for save_display_state() and restore_display_state()
+uint8_t  portc, portd, portg;   // Needed for save_display_state() and restore_display_state()
 
 // External variables, defined in other files
 extern bool     probe2;    // cached flag indicating whether 2nd probe is active
@@ -379,9 +379,12 @@ void save_display_state(void)
     disable_interrupts();       // Disable interrups while reading buttons
     portc   = PC_IDR & CC_ALL;  // Save common-cathode status 
     PC_ODR |= (CC_ALL);         // Disable common-cathodes
-    portd   = PD_IDR & BUTTONS; // Save 7-segment leds status connected to buttons
-    PD_DDR &= ~BUTTONS;         // Set PD6..PD3 as inputs
-    PD_CR1 |=  BUTTONS;         // Enable pull-ups for PD6..PD3 (Rpu is approx 45k)
+    portd   = PD_IDR & (KEY_PWR | KEY_S);   // Save 7-segment leds status connected to buttons
+    PD_DDR &= ~(KEY_PWR | KEY_S);           // Set PD4 and PD3 to inputs
+    PD_CR1 |=  (KEY_PWR | KEY_S);           // Enable pull-ups for PD4 and PD3 (Rpu is approx 45k)
+    portg   = PG_IDR & (KEY_UP | KEY_DOWN); // Save 7-segment leds status connected to buttons
+    PG_DDR &= ~(KEY_UP | KEY_DOWN);         // Set PG1 and PG0 to inputs
+    PG_CR1 |=  (KEY_UP | KEY_DOWN);         // Enable pull-ups for PG1 and PG0 (Rpu is approx 45k)
 } // save_display_state()
 
 /*-----------------------------------------------------------------------------
@@ -393,11 +396,16 @@ void save_display_state(void)
   ---------------------------------------------------------------------------*/
 void restore_display_state(void)
 {
-    PD_DDR |= BUTTONS;           // Set PD6..PD3 to outputs again
-    PD_CR1 |= BUTTONS;           // Set PD6..PD3 to Push-Pull again
-		PD_ODR &= ~BUTTONS;          // Init PD6..PD3
-		PD_ODR |= (portd & BUTTONS); // Restore value for PORTD
-		
+    PD_DDR |=  (KEY_PWR | KEY_S);          // Set PD4 and PD3 to outputs again
+    PD_CR1 |=  (KEY_PWR | KEY_S);          // Set PD4 and PD3 to Push-Pull again
+	PD_ODR &= ~(KEY_PWR | KEY_S);          // Init PD4 and PD3
+	PD_ODR |= (portd & (KEY_PWR | KEY_S)); // Restore value for PORTD
+
+    PG_DDR |=  (KEY_UP | KEY_DOWN);          // Set PG1 and PG0 to outputs again
+    PG_CR1 |=  (KEY_UP | KEY_DOWN);          // Set PG1 and PG0 to Push-Pull again
+	PG_ODR &= ~(KEY_UP | KEY_DOWN);          // Init PG1 and PG0
+	PG_ODR |= (portg & (KEY_UP | KEY_DOWN)); // Restore value for PORTD
+
     PC_ODR &= ~CC_ALL;           // init. common-cathodes
     PC_ODR |= portc;             // restore values for PORTC
     enable_interrupts();       // Re-enable Interrupts
@@ -418,7 +426,8 @@ void read_buttons(void)
     save_display_state();      // Save current state of 7-segment displays 
     for (b = 0; b < 10; b++) ; // give port a bit of time
     _buttons <<= 4;            // make room for new values of buttons
-    b          = ((PD_IDR & BUTTONS) >> 3); // 3..0: UP, DOWN, PWR, S
+    b          = (PG_IDR & (KEY_UP | KEY_DOWN));      // UP, DOWN in bits 1 and 0
+    b         |= ((PD_IDR & (KEY_PWR | KEY_S)) >> 1); // PWR, S in bits 3 and 2
     b          = (b ^ 0x0F) & 0x0F;         // Invert buttons (0 = pressed)
     _buttons  |= b;            // add buttons
     restore_display_state();   // Restore state of 7-segment displays

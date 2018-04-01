@@ -7,8 +7,8 @@ the stc-1000p-stm8 version (including the PID-control with SSR output), PLUS:
 - Interface for an **nRF24L01+** 2.4 GHz transceiver. Now you can control and communicate wireless with the STC1000p. The nRF24L01+ is known to have a large range (up to 100 metres is reported).
 - One-wire interface, so you can hook up a **DS18B20** One-Wire temperature-sensor for reliable temperature measurements.
 - **I<sup>2</sup>C**-interface for additional connection to other hardware (e.g. a MCP23017 16-bit IO expander to control solenoid ball valves).
-- An UART interface so that commands can be sent using serial communication.
-- A 433 MHz transmitter interface is added so that temperatures and relay on/off are sent (using the Fine Offset protocol from Matts original fimware).
+- An **UART** interface so that commands can be sent using serial communication.
+- A **433 MHz** transmitter interface is added so that temperatures and relay on/off are sent (using the Fine Offset protocol from Matts original fimware).
 
 The **STM8S105C6T6** µC has 32 Kbytes of Flash memory, 1024 bytes of EEPROM and 2 Kbytes of RAM. So there's plenty of room for all new functionality. It also has more than sufficient IO pins, since it is a LQFP48 package.
 
@@ -25,28 +25,39 @@ a development environment that nicely supports this device.
 
 Quick start
 -----------
-To be filled in...
+Assuming that you have bought (at least) one of those existing stc1000 on ebay/aliexpress, you need to do the following:
+- Open the housing of the stc1000. There are a few clips on the side and you should make a cut in the sticker. Bend the clips (carefully) and pull the frontpanel out.
+- The frontpanel PCB needs to be deconnected from the backplane. Remove all the solder-joints with the solder wick (or use a desoldering-iron). Place the solder wick over the solder-joints, heat it up with the soldering iron and make sure that the solder wick absorbs all solder.
+After having done this, it is possible to remove the frontpanel from the backplane with just a little bit of pulling. Be careful, since you don't want to break anything.
+- The 7-segment display is connected to the frontpanel with 12 pins and is going to be re-used. It is an essential part, so de-solder this from the frontpanel PCB. Be careful not to break anything.
+- If you wish, you can desolder a few parts from the backplane PCB, such as terminal blocks and relays. I replaced the stock relays with 16 A versions (Omron G5LE-1-E 12VDC).
+- Get yourself some PCBs (see below) and do some soldering...
+
+![hw_v03](img/hw_v03.jpg)<br>
+*This is how it should look: frontpanel v03 connected to new backplane PCB*
 
 Introduction
 --------------
-To be filled in...
+Much of this project is still work in progress, with hardware already pretty stable. The basic software from the stc1000p project runs, but most additional features mentioned above need to be added to the firmware.
+
+I work on this from time to time, so it is not a completely finished project yet.
 
 Frontpanel PCB
 ----------
-Here's the second version of the new frontpanel PCB.
+Here's version 03 of the new frontpanel PCB.
 
 ![frontpanel](img/stc1000p_steroids_schematics.png)<br>
-*Eagle schematics v0.21 of the Frontpanel with an STM8S105C6 µC*
+*Eagle schematics v03 of the Frontpanel with an STM8S105C6 µC*
 
 ![frontpanel](img/stc1000p_steroids_pcb.png)<br>
-*Eagle PCB of the Frontpanel, v0.21*
+*Eagle PCB of the Frontpanel, v03*
 
 ![frontpanel](img/Frontpanel_pcb.jpg)<br>
 *PCB as received from the PCB manufacturer (allpcb.com).*
 
 Backplane PCB
 ----------
-Although it is possible to connect the frontpanel PCB directly to an existing backplane, it is much useful to replace this with a new backplane. Main advantage is that you will have decent access to all new features via connectors at the back.
+Although it is possible to connect the frontpanel PCB directly to an existing backplane, it is much more useful to replace this with a new backplane. Main advantage is that you will have decent access to all new features via connectors at the back.
 
 ![backplane](img/stc1000p_backplane_schematics.png)<br>
 *Eagle schematics of the new backplane*
@@ -59,7 +70,7 @@ Although it is possible to connect the frontpanel PCB directly to an existing ba
 
 There's now a 10 pole terminal-block with the following connections:
 - **T2**: connect a temperature sensor to this pin and the +5V pin (same as in original STC1000)
-- **+5V**: +5V power-supply voltage (same as in original STC1000)
+- **+5V**: +5V power-supply voltage (same as in original STC1000). **BUG**: this should be 3.3V.
 - **T1**: connect a second temperature sensor to this pin and the +5V pin (same as for Matts firmware)
 - **GND**: ground (0 V) connection. 
 - **SSR**: SSR output. Connect this to the input line of a solid-state relay. This is a PID controlled output.
