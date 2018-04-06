@@ -302,6 +302,11 @@ Next=Root.Source Files.eep.c
 [Root.Source Files.eep.c]
 ElemType=File
 PathName=eep.c
+Next=Root.Source Files.fo433.c
+
+[Root.Source Files.fo433.c]
+ElemType=File
+PathName=fo433.c
 Next=Root.Source Files.i2c.c
 
 [Root.Source Files.i2c.c]
@@ -317,6 +322,11 @@ Next=Root.Source Files.nrf24_stm8_specific.c
 [Root.Source Files.nrf24_stm8_specific.c]
 ElemType=File
 PathName=nrf24_stm8_specific.c
+Next=Root.Source Files.one_wire.c
+
+[Root.Source Files.one_wire.c]
+ElemType=File
+PathName=one_wire.c
 Next=Root.Source Files.pid.c
 
 [Root.Source Files.pid.c]
@@ -434,6 +444,11 @@ Next=Root.Include Files.eep.h
 [Root.Include Files.eep.h]
 ElemType=File
 PathName=eep.h
+Next=Root.Include Files.fo433.h
+
+[Root.Include Files.fo433.h]
+ElemType=File
+PathName=fo433.h
 Next=Root.Include Files.i2c.h
 
 [Root.Include Files.i2c.h]
@@ -454,6 +469,11 @@ Next=Root.Include Files.nrf24l01.h
 [Root.Include Files.nrf24l01.h]
 ElemType=File
 PathName=nrf24l01.h
+Next=Root.Include Files.one_wire.h
+
+[Root.Include Files.one_wire.h]
+ElemType=File
+PathName=one_wire.h
 Next=Root.Include Files.pid.h
 
 [Root.Include Files.pid.h]

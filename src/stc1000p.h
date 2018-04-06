@@ -36,7 +36,7 @@
    09 PA3/TIM2_CH3[TIME3_CH1] SSR      | 21 PB1/AIN1[TIM1_CH2N] -
    10 PA4                     BUZZER   | 22 PB0/AIN0[TIM1_CH1N] -
    11 PA5                     D433     | 23 PE7/AIN8            -
-   12 PA6                     -        | 24 PE6/AIN9            -
+   12 PA6                     ISR      | 24 PE6/AIN9            -
    ------------------------------------|--------------------------------
    25 PE5/SPI_NSS             SPI_NSS  | 37 PE3/TIM1_BKIN       NRF24_CE
    26 PC1/TIM1_CH1/UART2_CK   CC1      | 38 PE2/I2C_SDA         I2C_SDA
@@ -78,6 +78,9 @@
 /* Also, keep track of last version that has changes in EEPROM layout */
 #define STC1000P_VERSION	(200)
 #define STC1000P_EEPROM_VERSION	 (20)
+
+// I2C base address of DS2482
+#define DS2482_BASE (0x30)
 
 // PORTG IO: 7 segment E + F
 #define S7_E     (0x02)
@@ -129,12 +132,13 @@
 #define AD_NTC2     (0x02) /* AIN2 */
 
 // PORTA IO: outputs: D433 = PA5, Alarm (Buzzer) = PA4, SSR = PA3, Cool = PA2, Heat = PA1
+#define ISR_OUT  (0x40)
 #define D433_OUT (0x20)
 #define ALARM    (0x10)
 #define SSR      (0x08)
 #define COOL     (0x04)
 #define HEAT     (0x02)
-#define PA_NC    (0xC1)
+#define PA_NC    (0x81)
 
 #define ALARM_ON    (PA_ODR |=  ALARM)
 #define ALARM_OFF   (PA_ODR &= ~ALARM)
@@ -219,5 +223,6 @@ void adc_task(void);
 void std_task(void);
 void ctrl_task(void);
 void prfl_task(void);
+void one_wire_task(void);
 
 #endif // __STC1000P_H__

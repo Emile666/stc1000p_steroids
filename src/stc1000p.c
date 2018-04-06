@@ -29,6 +29,7 @@
 #include "eep.h"
 #include "i2c.h"
 #include "nrf24.h"
+#include "fo433.h"
 
 // Global variables
 uint8_t   ad_err1 = false; // used for adc range checking
@@ -42,6 +43,9 @@ int16_t   temp_ntc1;         // The temperature in E-1 °C from NTC probe 1
 int16_t   temp_ntc2;         // The temperature in E-1 °C from NTC probe 2
 uint8_t   mpx_nr = 0;        // Used in multiplexer() function
 int16_t   pwr_on_tmr = 1000; // Needed for 7-segment display test
+int16_t   temp1_ow_84;       // TMLT Temperature from DS18B20 in °C * 128
+uint8_t   temp1_ow_err = 0;  // 1 = Read error from DS18B20
+bool      msec051 = false;   // millisecond indicator
 
 // Radio pipe addresses for the communication nodes
 uint8_t tx_address[5] = {0xFF,0xFF,0xFF,0xFF,0xFF};
@@ -65,15 +69,15 @@ extern uint32_t t2_millis;        // needed for delay_msec()
 
 /*-----------------------------------------------------------------------------
   Purpose  : This routine multiplexes the 4 segments of the 7-segment displays.
-             It runs at 1 kHz, so there's a full update after every 4 msec.
+             It runs at 2 kHz, so there's a full update after every 2 msec.
   Variables: -
-// PD7 PG1 PG0 PD4 PD3 PD2 PE0 PD0
-//  D   E   F   G   dp  A   C   B 
   Returns  : -
   ---------------------------------------------------------------------------*/
 void multiplexer(void)
 {
     // Disable all 7-segment LEDs and common-cathode pins
+    // PD7 PG1 PG0 PD4 PD3 PD2 PE0 PD0
+    //  D   E   F   G   dp  A   C   B 
     PG_ODR    &= ~PG_SEG7; // Clear LEDs
     PD_ODR    &= ~PD_SEG7; // Clear LEDs
     PE_ODR    &= ~PE_SEG7; // Clear LEDs
@@ -117,28 +121,36 @@ void multiplexer(void)
 
 /*-----------------------------------------------------------------------------
   Purpose  : This is the interrupt routine for the Timer 2 Overflow handler.
-             It runs at 1 kHz and drives the scheduler and the multiplexer.
+             It runs at 2 kHz and drives the scheduler and the multiplexer.
+             Measured timing: 1.8 usec and 26 usec duration (5.2 %).
   Variables: -
   Returns  : -
   ---------------------------------------------------------------------------*/
-//#pragma vector = TIM2_OVR_UIF_vector
 @interrupt void TIM2_UPD_OVF_IRQHandler(void)
 {
-    t2_millis++;      // update millisecond counter
-	scheduler_isr();  // Run scheduler interrupt function
-    if (!pwr_on)
-    {   // Display OFF on dispay
-	    led_10     = LED_O;
-	    led_1      = led_01 = LED_F;
-        led_e      = LED_OFF;
-        pwr_on_tmr = 1000; // 1 second
+    PA_ODR |= ISR_OUT; // Time-measurement interrupt routine
+    fo433_isr();         // This should run at 2 kHz
+    msec051 = !msec051;  // msec indicator
+    if (msec051)
+    {   // this runs every millisecond
+        t2_millis++;       // update millisecond counter
+        scheduler_isr();   // Run scheduler interrupt function
+    
+        if (!pwr_on)
+        {   // Display OFF on dispay
+            led_10     = LED_O;
+            led_1      = led_01 = LED_F;
+            led_e      = LED_OFF;
+            pwr_on_tmr = 1000; // 1 second
+        } // if
+        else if (pwr_on_tmr > 0)
+        {	// 7-segment display test for 1 second
+            pwr_on_tmr--;
+            led_10 = led_1 = led_01 = led_e = LED_ON;
+        } // else if
+        multiplexer();           // Run multiplexer for Display
     } // if
-    else if (pwr_on_tmr > 0)
-    {	// 7-segment display test for 1 second
-        pwr_on_tmr--;
-        led_10 = led_1 = led_01 = led_e = LED_ON;
-    } // else if
-    multiplexer();    // Run multiplexer for Display and Keys
+    PA_ODR   &= ~ISR_OUT;      // Time-measurement interrupt routine
     TIM2_SR1 &= ~TIM2_SR1_UIF; // Reset interrupt (UIF bit) so it will not fire again straight away.
 } // TIM2_UPD_OVF_IRQHandler()
 
@@ -167,16 +179,16 @@ void initialise_system_clock(void)
 } // initialise_system_clock()
 
 /*-----------------------------------------------------------------------------
-  Purpose  : This routine initialises Timer 2 to generate a 1 kHz interrupt.
-             16 MHz / (  16 *  1000) = 1000 Hz (1000 = 0x03E8)
+  Purpose  : This routine initialises Timer 2 to generate a 2 kHz interrupt.
+             16 MHz / (16 * 500) = 2000 Hz (500 = 0x01F4)
   Variables: -
   Returns  : -
   ---------------------------------------------------------------------------*/
 void setup_timer2(void)
 {
     TIM2_PSCR = 0x04;         //  Prescaler = 16
-    TIM2_ARRH = 0x03;         //  High byte of 1000
-    TIM2_ARRL = 0xE8;         //  Low  byte of 1000
+    TIM2_ARRH = 0x01;         //  High byte of 500
+    TIM2_ARRL = 0xF4;         //  Low  byte of 500
     TIM2_IER  = TIM2_IER_UIE; //  Enable the update interrupts, disable all others
     TIM2_CR1  = TIM2_CR1_CEN; //  Finally enable the timer
 } // setup_timer2()
@@ -189,11 +201,11 @@ void setup_timer2(void)
   ---------------------------------------------------------------------------*/
 void setup_gpio_ports(void)
 {
-	PA_DDR     |=  (SSR | COOL | HEAT | ALARM | D433_OUT); // Set as output
+	PA_DDR     |=  (SSR | COOL | HEAT | ALARM | D433_OUT | ISR_OUT); // Set as output
 	PA_DDR     &= ~PA_NC;                      // Set unused ports as input
 	PA_CR1     |=  PA_NC;                      // Enable pull-up
-    PA_CR1     |=  (SSR | COOL | HEAT | ALARM | D433_OUT); // Set to Push-Pull
-    PA_ODR     &= ~(SSR | COOL | HEAT | ALARM | D433_OUT); // Disable PORTA outputs
+    PA_CR1     |=  (SSR | COOL | HEAT | ALARM | D433_OUT | ISR_OUT); // Set to Push-Pull
+    PA_ODR     &= ~(SSR | COOL | HEAT | ALARM | D433_OUT | ISR_OUT); // Disable PORTA outputs
 		
     PB_DDR     |= (LED1 | LED2 | LED3);  // Set as output
     PB_DDR     &= ~(PB_NC | AD_CHANNELS);            // Set as input
@@ -296,7 +308,7 @@ void pid_to_time(void)
                 if ((ltmr > 0) || !pwr_on) std_ptt = 0;
             } // if
             else htmr--; // decrease timer
-            SSR_ON;       // SSR output = 1
+            SSR_ON;      // SSR output = 1
             break;
     } // switch
 } // pid_to_time()
@@ -311,12 +323,13 @@ void std_task(void)
 {
     read_buttons(); // reads the buttons keys, result is stored in _buttons
     menu_fsm();     // Finite State Machine menu
-    pid_to_time();  // Make Slow-PWM signal and send to S3 output-port
+    pid_to_time();  // Make Slow-PWM signal and send to SSR output-port
 } // std_task()
 
 /*-----------------------------------------------------------------------------
   Purpose  : This task is called every second and contains the main control
-             task for the device. It also calls temperature_control().
+             task for the device. It also calls temperature_control() / 
+             pis_ctrl() and is used to drive the 433 MHZ transmitter FSM.
   Variables: -
   Returns  : -
   ---------------------------------------------------------------------------*/
@@ -407,6 +420,8 @@ void ctrl_task(void)
            show_sa_alarm = !show_sa_alarm;
        } // if
    } // else
+   fo433_fsm();     // call the FO433 state machine
+   one_wire_task(); // read from one-wire temperature sensor if present
 } // ctrl_task()
 
 /*-----------------------------------------------------------------------------
@@ -468,6 +483,35 @@ void spi_task(void)
 	
 	nrf24_powerDown(); /* Power down after TX */
 } // spi_task();
+
+/*--------------------------------------------------------------------
+  Purpose  : This is the task that processes the temperatures from
+			 the One-Wire sensor. The sensor has its
+			 own DS2482 I2C-to-One-Wire bridge. Since this sensor has 4
+			 fractional bits (1/2, 1/4, 1/8, 1/16), a signed Q8.4 format
+			 would be sufficient. 
+			 This task is called every second so that every 2 seconds a new
+			 temperature is present.
+  Variables: temp1_ow_84 : Temperature read from sensor in Q8.4 format
+			 temp1_ow_err: 1=error
+  Returns  : -
+  --------------------------------------------------------------------*/
+void one_wire_task(void)
+{
+	static int ow_std = 0; // internal state
+	
+	switch (ow_std)
+	{   
+		case 0: // Start Conversion
+				ds18b20_start_conversion(DS2482_BASE);
+				ow_std = 1;
+				break;
+		case 1: // Read Thlt device
+			    temp1_ow_84 = ds18b20_read(DS2482_BASE, &temp1_ow_err,1);
+				ow_std = 0;
+				break;
+	} // switch
+} // one_wire_task()
 
 /*-----------------------------------------------------------------------------
   Purpose  : This is the main entry-point for the entire program.

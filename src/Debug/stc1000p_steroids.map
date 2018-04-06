@@ -1,26 +1,26 @@
 
-Map of Debug\stc1000p_steroids.sm8 from link file Debug\stc1000p_steroids.lkf - Sat Mar 31 13:10:34 2018
+Map of Debug\stc1000p_steroids.sm8 from link file Debug\stc1000p_steroids.lkf - Fri Apr 06 15:57:41 2018
 
 
                                --------
                                Segments
                                --------
 
-start 00008080 end 0000818b length   267 segment .const
-start 000081cc end 0000a5f0 length  9252 segment .text
-start 00004000 end 0000410c length   268 segment .eeprom
-start 00000000 end 00000033 length    51 segment .bsct, initialized
-start 00008198 end 000081cb length    51 segment .bsct, from
-start 00000033 end 000000cb length   152 segment .ubsct
-start 0000cb:0 end 0000cb:7 length     7 segment .bit, initialized
-start 000081cb end 000081cc length     1 segment .bit, from
-start 000000cc end 000000cc length     0 segment .share
+start 00008080 end 0000818f length   271 segment .const
+start 000081db end 0000acff length 11044 segment .text
+start 00004000 end 0000410e length   270 segment .eeprom
+start 00000000 end 0000003d length    61 segment .bsct, initialized
+start 0000819c end 000081d9 length    61 segment .bsct, from
+start 0000003d end 000000eb length   174 segment .ubsct
+start 0000eb:0 end 0000ec:1 length     9 segment .bit, initialized
+start 000081d9 end 000081db length     2 segment .bit, from
+start 000000ed end 000000ed length     0 segment .share
 start 00000100 end 00000100 length     0 segment .data
 start 00000100 end 00000100 length     0 segment .bss
-start 00000000 end 000009ca length  2506 segment .info.
-start 00000000 end 00013077 length 77943 segment .debug
+start 00000000 end 00000aa1 length  2721 segment .info.
+start 00000000 end 00017613 length 95763 segment .debug
 start 00008000 end 00008080 length   128 segment .const
-start 0000818b end 00008198 length    13 segment .init
+start 0000818f end 0000819c length    13 segment .init
 
 
                                -------
@@ -28,175 +28,189 @@ start 0000818b end 00008198 length    13 segment .init
                                -------
 
 C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Lib\crtsi0.sm8:
-start 000081cc end 0000821c length    80 section .text
+start 000081db end 0000822b length    80 section .text
 start 00000100 end 00000100 length     0 section .bss
-start 00000033 end 00000033 length     0 section .ubsct
+start 0000003d end 0000003d length     0 section .ubsct
 start 00000000 end 0000002f length    47 section .info.
 
 Debug\adc.o:
-start 0000821c end 00008344 length   296 section .text
+start 0000822b end 00008353 length   296 section .text
 start 00000000 end 00001d56 length  7510 section .debug
 start 0000002f end 00000097 length   104 section .info.
 start 00008080 end 00008100 length   128 section .const
 
 Debug\delay.o:
-start 00008344 end 00008421 length   221 section .text
+start 00008353 end 00008430 length   221 section .text
 start 00000000 end 00000004 length     4 section .bsct
 start 00001d56 end 00003acc length  7542 section .debug
 start 00000097 end 00000101 length   106 section .info.
 
 Debug\eep.o:
-start 00008421 end 00008492 length   113 section .text
+start 00008430 end 000084a1 length   113 section .text
 start 00003acc end 00005765 length  7321 section .debug
 start 00000101 end 00000169 length   104 section .info.
 
+Debug\fo433.o:
+start 000084a1 end 000085f9 length   344 section .text
+start 00000004 end 0000000b length     7 section .bsct
+start 0000003d end 00000043 length     6 section .ubsct
+start 00005765 end 00007501 length  7580 section .debug
+start 00000169 end 000001d3 length   106 section .info.
+
 Debug\i2c.o:
-start 00008492 end 00008a9f length  1549 section .text
-start 00005765 end 00007f10 length 10155 section .debug
-start 00000169 end 000001d1 length   104 section .info.
+start 000085f9 end 00008c06 length  1549 section .text
+start 00007501 end 00009cac length 10155 section .debug
+start 000001d3 end 0000023b length   104 section .info.
 
 Debug\nrf24.o:
-start 00008a9f end 00008d11 length   626 section .text
-start 00000033 end 00000034 length     1 section .ubsct
-start 00007f10 end 0000a349 length  9273 section .debug
-start 000001d1 end 0000023b length   106 section .info.
+start 00008c06 end 00008e78 length   626 section .text
+start 00000043 end 00000044 length     1 section .ubsct
+start 00009cac end 0000c0e5 length  9273 section .debug
+start 0000023b end 000002a5 length   106 section .info.
 
 Debug\nrf24_stm8_specific.o:
-start 00008d11 end 00008d47 length    54 section .text
-start 0000a349 end 0000bfeb length  7330 section .debug
-start 0000023b end 000002b3 length   120 section .info.
+start 00008e78 end 00008eae length    54 section .text
+start 0000c0e5 end 0000dd87 length  7330 section .debug
+start 000002a5 end 0000031d length   120 section .info.
+
+Debug\one_wire.o:
+start 00008eae end 0000940f length  1377 section .text
+start 00000044 end 00000052 length    14 section .ubsct
+start 0000dd87 end 000104b0 length 10025 section .debug
+start 0000031d end 0000038a length   109 section .info.
+start 0000eb:0 end 0000eb:1 length     1 section .bit
 
 Debug\pid.o:
-start 00008d47 end 00008e4b length   260 section .text
-start 00000004 end 0000000b length     7 section .bsct
-start 00000034 end 00000044 length    16 section .ubsct
-start 0000bfeb end 0000c284 length   665 section .debug
-start 000002b3 end 0000031b length   104 section .info.
+start 0000940f end 00009513 length   260 section .text
+start 0000000b end 00000012 length     7 section .bsct
+start 00000052 end 00000062 length    16 section .ubsct
+start 000104b0 end 00010749 length   665 section .debug
+start 0000038a end 000003f2 length   104 section .info.
 
 Debug\scheduler.o:
-start 00008e4b end 000090b0 length   613 section .text
-start 0000000b end 0000000c length     1 section .bsct
-start 00000044 end 000000ad length   105 section .ubsct
-start 0000c284 end 0000c802 length  1406 section .debug
-start 0000031b end 00000389 length   110 section .info.
+start 00009513 end 00009778 length   613 section .text
+start 00000012 end 00000013 length     1 section .bsct
+start 00000062 end 000000cb length   105 section .ubsct
+start 00010749 end 00010cc7 length  1406 section .debug
+start 000003f2 end 00000460 length   110 section .info.
 
 Debug\spi.o:
-start 000090b0 end 0000911d length   109 section .text
-start 000000ad end 000000ae length     1 section .ubsct
-start 0000c802 end 0000e4ae length  7340 section .debug
-start 00000389 end 000003f1 length   104 section .info.
+start 00009778 end 000097e5 length   109 section .text
+start 000000cb end 000000cc length     1 section .ubsct
+start 00010cc7 end 00012973 length  7340 section .debug
+start 00000460 end 000004c8 length   104 section .info.
 
 Debug\stc1000p.o:
-start 0000911d end 00009731 length  1556 section .text
-start 0000000c end 00000023 length    23 section .bsct
-start 000000ae end 000000b2 length     4 section .ubsct
-start 0000e4ae end 000105fe length  8528 section .debug
-start 000003f1 end 0000045e length   109 section .info.
-start 0000cb:0 end 0000cb:3 length     3 section .bit
+start 000097e5 end 00009e40 length  1627 section .text
+start 00000013 end 0000002d length    26 section .bsct
+start 000000cc end 000000d2 length     6 section .ubsct
+start 00012973 end 00014b86 length  8723 section .debug
+start 000004c8 end 00000535 length   109 section .info.
+start 0000eb:1 end 0000eb:5 length     4 section .bit
 start 00008100 end 0000811b length    27 section .const
 
 Debug\stc1000p_lib.o:
-start 00009731 end 0000a2fe length  3021 section .text
-start 00000023 end 00000033 length    16 section .bsct
-start 000000b2 end 000000c1 length    15 section .ubsct
-start 000105fe end 00012ec7 length 10441 section .debug
-start 0000045e end 000004cf length   113 section .info.
-start 0000811b end 0000818b length   112 section .const
-start 00004000 end 0000410c length   268 section .eeprom
-start 0000cb:3 end 0000cb:7 length     4 section .bit
+start 00009e40 end 0000aa0d length  3021 section .text
+start 0000002d end 0000003d length    16 section .bsct
+start 000000d2 end 000000e1 length    15 section .ubsct
+start 00014b86 end 00017463 length 10461 section .debug
+start 00000535 end 000005a6 length   113 section .info.
+start 0000811b end 0000818f length   116 section .const
+start 00004000 end 0000410e length   270 section .eeprom
+start 0000eb:5 end 0000ec:1 length     4 section .bit
 
 (C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Lib\libis0.sm8)strcmp0.o:
-start 0000a2fe end 0000a311 length    19 section .text
-start 000004cf end 000004fd length    46 section .info.
+start 0000aa0d end 0000aa20 length    19 section .text
+start 000005a6 end 000005d4 length    46 section .info.
 
 (C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Lib\libis0.sm8)strncp.o:
-start 0000a311 end 0000a337 length    38 section .text
-start 000004fd end 00000571 length   116 section .info.
+start 0000aa20 end 0000aa46 length    38 section .text
+start 000005d4 end 00000648 length   116 section .info.
 
 (C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Lib\libm0.sm8)cmulx.o:
-start 0000a337 end 0000a34b length    20 section .text
-start 00000571 end 000005a0 length    47 section .info.
+start 0000aa46 end 0000aa5a length    20 section .text
+start 00000648 end 00000677 length    47 section .info.
 
 (C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Lib\libm0.sm8)itolx.o:
-start 0000a34b end 0000a359 length    14 section .text
-start 000005a0 end 000005cf length    47 section .info.
+start 0000aa5a end 0000aa68 length    14 section .text
+start 00000677 end 000006a6 length    47 section .info.
 
 (C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Lib\libm0.sm8)lcmp.o:
-start 0000a359 end 0000a379 length    32 section .text
-start 000005cf end 000005fd length    46 section .info.
+start 0000aa68 end 0000aa88 length    32 section .text
+start 000006a6 end 000006d4 length    46 section .info.
 
 (C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Lib\libm0.sm8)lgadc.o:
-start 0000a379 end 0000a389 length    16 section .text
-start 000005fd end 0000062c length    47 section .info.
+start 0000aa88 end 0000aa98 length    16 section .text
+start 000006d4 end 00000703 length    47 section .info.
 
 (C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Lib\libm0.sm8)lgadd.o:
-start 0000a389 end 0000a3a0 length    23 section .text
-start 0000062c end 0000065b length    47 section .info.
+start 0000aa98 end 0000aaaf length    23 section .text
+start 00000703 end 00000732 length    47 section .info.
 
 (C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Lib\libm0.sm8)lgrsh.o:
-start 0000a3a0 end 0000a3ae length    14 section .text
-start 0000065b end 0000068a length    47 section .info.
+start 0000aaaf end 0000aabd length    14 section .text
+start 00000732 end 00000761 length    47 section .info.
 
 (C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Lib\libm0.sm8)lmul.o:
-start 0000a3ae end 0000a439 length   139 section .text
-start 0000068a end 000006b8 length    46 section .info.
+start 0000aabd end 0000ab48 length   139 section .text
+start 00000761 end 0000078f length    46 section .info.
 
 (C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Lib\libm0.sm8)lreg.o:
-start 000000c1 end 000000c5 length     4 section .ubsct
-start 000006b8 end 000006e6 length    46 section .info.
+start 000000e1 end 000000e5 length     4 section .ubsct
+start 0000078f end 000007bd length    46 section .info.
 
 (C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Lib\libm0.sm8)lrsh.o:
-start 0000a439 end 0000a448 length    15 section .text
-start 000006e6 end 00000714 length    46 section .info.
+start 0000ab48 end 0000ab57 length    15 section .text
+start 000007bd end 000007eb length    46 section .info.
 
 (C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Lib\libm0.sm8)lsub.o:
-start 0000a448 end 0000a460 length    24 section .text
-start 00000714 end 00000742 length    46 section .info.
+start 0000ab57 end 0000ab6f length    24 section .text
+start 000007eb end 00000819 length    46 section .info.
 
 (C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Lib\libm0.sm8)ltor.o:
-start 0000a460 end 0000a472 length    18 section .text
-start 00000742 end 00000770 length    46 section .info.
+start 0000ab6f end 0000ab81 length    18 section .text
+start 00000819 end 00000847 length    46 section .info.
 
 (C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Lib\libm0.sm8)ludiv.o:
-start 0000a472 end 0000a486 length    20 section .text
-start 00000770 end 0000079f length    47 section .info.
+start 0000ab81 end 0000ab95 length    20 section .text
+start 00000847 end 00000876 length    47 section .info.
 
 (C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Lib\libm0.sm8)ldiv.o:
-start 0000a486 end 0000a571 length   235 section .text
-start 0000079f end 000007cd length    46 section .info.
+start 0000ab95 end 0000ac80 length   235 section .text
+start 00000876 end 000008a4 length    46 section .info.
 
 (C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Lib\libm0.sm8)lgneg.o:
-start 0000a571 end 0000a584 length    19 section .text
-start 000007cd end 000007fc length    47 section .info.
+start 0000ac80 end 0000ac93 length    19 section .text
+start 000008a4 end 000008d3 length    47 section .info.
 
 (C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Lib\libm0.sm8)lneg.o:
-start 0000a584 end 0000a599 length    21 section .text
-start 000007fc end 0000082a length    46 section .info.
+start 0000ac93 end 0000aca8 length    21 section .text
+start 000008d3 end 00000901 length    46 section .info.
 
 (C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Lib\libm0.sm8)rtol.o:
-start 0000a599 end 0000a5ab length    18 section .text
-start 0000082a end 00000858 length    46 section .info.
+start 0000aca8 end 0000acba length    18 section .text
+start 00000901 end 0000092f length    46 section .info.
 
 (C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Lib\libm0.sm8)utolx.o:
-start 0000a5ab end 0000a5b2 length     7 section .text
-start 00000858 end 00000887 length    47 section .info.
+start 0000acba end 0000acc1 length     7 section .text
+start 0000092f end 0000095e length    47 section .info.
 
 (C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Lib\libm0.sm8)umul.o:
-start 0000a5b2 end 0000a5ee length    60 section .text
-start 00000887 end 000008b5 length    46 section .info.
+start 0000acc1 end 0000acfd length    60 section .text
+start 0000095e end 0000098c length    46 section .info.
 
 (C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Lib\libm0.sm8)xreg.o:
-start 000000c5 end 000000c8 length     3 section .ubsct
-start 000008b5 end 000008e3 length    46 section .info.
+start 000000e5 end 000000e8 length     3 section .ubsct
+start 0000098c end 000009ba length    46 section .info.
 
 (C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Lib\libm0.sm8)yreg.o:
-start 000000c8 end 000000cb length     3 section .ubsct
-start 000008e3 end 00000911 length    46 section .info.
+start 000000e8 end 000000eb length     3 section .ubsct
+start 000009ba end 000009e8 length    46 section .info.
 
 Debug\stm8_interrupt_vector.o:
-start 0000a5ee end 0000a5f0 length     2 section .text
-start 00012ec7 end 00013077 length   432 section .debug
-start 00000911 end 0000098b length   122 section .info.
+start 0000acfd end 0000acff length     2 section .text
+start 00017463 end 00017613 length   432 section .debug
+start 000009e8 end 00000a62 length   122 section .info.
 start 00008000 end 00008080 length   128 section .const
 
 
@@ -218,13 +232,18 @@ Debug\eep.o:
 _eeprom_read_config              6   (6)
 _eeprom_write_config            13   (7)
 
+Debug\fo433.o:
+_fo433_crc8                      6   (6)
+_fo433_fsm                      12   (6)
+_fo433_isr                       2   (2)
+
 Debug\i2c.o:
 _I2C_IRQHandler             >    5   (5)
 _ds2482_detect                  26   (3)
 _ds2482_detect_bb               38   (3)
 _ds2482_reset                   18   (5)
 _ds2482_reset_bb                30   (5)
-_ds2482_search_triplet      >   25   (7)
+_ds2482_search_triplet          25   (7)
 _ds2482_write_config            23   (5)
 _ds2482_write_config_bb         35   (5)
 _i2c_delay                       3   (3)
@@ -275,6 +294,25 @@ _nrf24_csn                       2   (2)
 _nrf24_init                      4   (2)
 _spi_transfer                   20   (2)
 
+Debug\one_wire.o:
+_OW_block                   >   35   (7)
+_OW_family_skip_setup       >    2   (2)
+_OW_first                   >   38   (2)
+_OW_next                    >   38   (2)
+_OW_read_bit                >   26   (2)
+_OW_read_byte                   24   (6)
+_OW_reset                       23   (5)
+_OW_search                      36   (11)
+_OW_target_setup            >    3   (3)
+_OW_touch_bit                   24   (6)
+_OW_touch_byte                  28   (4)
+_OW_verify                  >   53   (17)
+_OW_write_bit               >   28   (4)
+_OW_write_byte                  24   (6)
+_calc_crc8                       3   (3)
+_ds18b20_read                   42   (18)
+_ds18b20_start_conversion       28   (4)
+
 Debug\pid.o:
 _init_pid                       29   (15)
 _pid_ctrl                       18   (12)
@@ -282,7 +320,7 @@ _pid_ctrl                       18   (12)
 Debug\scheduler.o:
 _add_task                       25   (15)
 _disable_task                   10   (6)
-_dispatch_tasks                 51   (3) *** pointer() ***
+_dispatch_tasks                 55   (3) *** pointer() ***
 _enable_task                    10   (6)
 _scheduler_init                  2   (2)
 _scheduler_isr                   3   (3)
@@ -297,10 +335,11 @@ _spi_write                      17   (3)
 Debug\stc1000p.o:
 _TIM2_UPD_OVF_IRQHandler    >   14   (11)
 _adc_task                       22   (7)
-_ctrl_task                      39   (8)
+_ctrl_task                      52   (8)
 _initialise_system_clock         2   (2)
-_main                       >   56   (5)
+_main                       >   60   (5)
 _multiplexer                     2   (2)
+_one_wire_task                  44   (2)
 _pid_to_time                     4   (4)
 _prfl_task                      32   (2)
 _setup_gpio_ports                2   (2)
@@ -334,7 +373,7 @@ C:\Program Files (x86:
 _strcmp                          4   (4)
 _strncpy                        10   (10)
 
-Stack size: 70
+Stack size: 74
 
 
                               ---------
@@ -342,437 +381,539 @@ Stack size: 70
                               ---------
    1 > _I2C_IRQHandler: (5)
 
-   2 > _SPI_Handler: (5)
-
-   3 > _TIM2_UPD_OVF_IRQHandler: (11)
-   4      + _multiplexer: (2)
-   5      + _scheduler_isr: (3)
-       
-   6 > __stext: (0)
-
-   7 > _ds2482_search_triplet: (7)
-   8      + _ds2482_reset: (5)
-   9      |    + _i2c_read: (5)
-  10      |    |    + _i2c_delay: (3)
-  11      |    |    + _i2c_readN: (5)
-  12      |    |    |    + _i2c_delay --> 10
-          |    |    | 
-          |    | 
-  13      |    + _i2c_rep_start: (4)
-  14      |    |    + _i2c_delay --> 10
-          |    | 
-  15      |    + _i2c_start: (4)
-  16      |    |    + _i2c_delay --> 10
-  17      |    |    + _i2c_stop: (2)
-  18      |    |    |    + _i2c_delay --> 10
-          |    |    | 
-  19      |    |    + _recv_ack_bit: (5)
-  20      |    |    |    + _i2c_delay --> 10
-          |    |    | 
-          |    | 
-  21      |    + _i2c_write: (3)
-  22      |    |    + _i2c_delay --> 10
-          |    | 
-          | 
-  23      + _i2c_read --> 9
-  24      + _i2c_rep_start --> 13
-  25      + _i2c_start --> 15
-  26      + _i2c_write --> 21
-       
-  27 > _lm92_read: (10)
-  28      + _i2c_readN --> 11
-  29      + _i2c_start --> 15
-  30      + _i2c_stop --> 17
-       
-  31 > _main: (5)
-  32      + _add_task: (15)
-  33      |    + _strncpy: (10)
-          | 
-  34      + _disable_task: (6)
-  35      |    + _strcmp: (4)
-          | 
-  36      + _dispatch_tasks: (3)
-  37      |    + (_adc_task) ...
-  38      |    + (_ctrl_task) ...
-  39      |    + (_prfl_task) ...
-  40      |    + (_spi_task) ...
-  41      |    + (_std_task) ...
-          | 
-  42      + _ds2482_detect: (3)
-  43      |    + _ds2482_reset --> 8
-  44      |    + _ds2482_write_config: (5)
-  45      |    |    + _ds2482_reset --> 8
-  46      |    |    + _i2c_read --> 9
-  47      |    |    + _i2c_rep_start --> 13
-  48      |    |    + _i2c_start --> 15
-  49      |    |    + _i2c_write --> 21
-          |    | 
-          | 
-  50      + _ds2482_detect_bb: (3)
-  51      |    + _ds2482_reset_bb: (5)
-  52      |    |    + _i2c_read_bb: (5)
-  53      |    |    |    + _delay_usec: (8)
-  54      |    |    |    |    + _tmr2_val: (6)
+   2 > _OW_block: (7)
+   3      + _OW_touch_byte: (4)
+   4      |    + _OW_read_byte: (6)
+   5      |    |    + _ds2482_reset: (5)
+   6      |    |    |    + _i2c_read: (5)
+   7      |    |    |    |    + _i2c_delay: (3)
+   8      |    |    |    |    + _i2c_readN: (5)
+   9      |    |    |    |    |    + _i2c_delay --> 7
+          |    |    |    |    | 
+          |    |    |    | 
+  10      |    |    |    + _i2c_rep_start: (4)
+  11      |    |    |    |    + _i2c_delay --> 7
+          |    |    |    | 
+  12      |    |    |    + _i2c_start: (4)
+  13      |    |    |    |    + _i2c_delay --> 7
+  14      |    |    |    |    + _i2c_stop: (2)
+  15      |    |    |    |    |    + _i2c_delay --> 7
+          |    |    |    |    | 
+  16      |    |    |    |    + _recv_ack_bit: (5)
+  17      |    |    |    |    |    + _i2c_delay --> 7
+          |    |    |    |    | 
+          |    |    |    | 
+  18      |    |    |    + _i2c_write: (3)
+  19      |    |    |    |    + _i2c_delay --> 7
           |    |    |    | 
           |    |    | 
-  55      |    |    + _i2c_rep_start_bb: (3)
-  56      |    |    |    + _delay_usec --> 53
-  57      |    |    |    + _i2c_start_bb: (3)
-  58      |    |    |    |    + _delay_usec --> 53
-  59      |    |    |    |    + _i2c_write_bb: (5)
-  60      |    |    |    |    |    + _delay_usec --> 53
+  20      |    |    + _i2c_read --> 6
+  21      |    |    + _i2c_rep_start --> 10
+  22      |    |    + _i2c_start --> 12
+  23      |    |    + _i2c_stop --> 14
+  24      |    |    + _i2c_write --> 18
+          |    | 
+  25      |    + _OW_write_byte: (6)
+  26      |    |    + _ds2482_reset --> 5
+  27      |    |    + _i2c_read --> 6
+  28      |    |    + _i2c_rep_start --> 10
+  29      |    |    + _i2c_start --> 12
+  30      |    |    + _i2c_stop --> 14
+  31      |    |    + _i2c_write --> 18
+          |    | 
+          | 
+       
+  32 > _OW_family_skip_setup: (2)
+
+  33 > _OW_first: (2)
+  34      + _OW_search: (11)
+  35      |    + _OW_reset: (5)
+  36      |    |    + _ds2482_reset --> 5
+  37      |    |    + _i2c_read --> 6
+  38      |    |    + _i2c_rep_start --> 10
+  39      |    |    + _i2c_start --> 12
+  40      |    |    + _i2c_stop --> 14
+  41      |    |    + _i2c_write --> 18
+          |    | 
+  42      |    + _OW_write_byte --> 25
+  43      |    + _calc_crc8: (3)
+  44      |    + _ds2482_search_triplet: (7)
+  45      |    |    + _ds2482_reset --> 5
+  46      |    |    + _i2c_read --> 6
+  47      |    |    + _i2c_rep_start --> 10
+  48      |    |    + _i2c_start --> 12
+  49      |    |    + _i2c_write --> 18
+          |    | 
+          | 
+       
+  50 > _OW_next: (2)
+  51      + _OW_search --> 34
+       
+  52 > _OW_read_bit: (2)
+  53      + _OW_touch_bit: (6)
+  54      |    + _ds2482_reset --> 5
+  55      |    + _i2c_read --> 6
+  56      |    + _i2c_rep_start --> 10
+  57      |    + _i2c_start --> 12
+  58      |    + _i2c_stop --> 14
+  59      |    + _i2c_write --> 18
+          | 
+       
+  60 > _OW_target_setup: (3)
+
+  61 > _OW_verify: (17)
+  62      + _OW_search --> 34
+       
+  63 > _OW_write_bit: (4)
+  64      + _OW_touch_bit --> 53
+       
+  65 > _SPI_Handler: (5)
+
+  66 > _TIM2_UPD_OVF_IRQHandler: (11)
+  67      + _fo433_isr: (2)
+  68      + _multiplexer: (2)
+  69      + _scheduler_isr: (3)
+       
+  70 > __stext: (0)
+
+  71 > _lm92_read: (10)
+  72      + _i2c_readN --> 8
+  73      + _i2c_start --> 12
+  74      + _i2c_stop --> 14
+       
+  75 > _main: (5)
+  76      + _add_task: (15)
+  77      |    + _strncpy: (10)
+          | 
+  78      + _disable_task: (6)
+  79      |    + _strcmp: (4)
+          | 
+  80      + _dispatch_tasks: (3)
+  81      |    + (_adc_task) ...
+  82      |    + (_ctrl_task) ...
+  83      |    + (_prfl_task) ...
+  84      |    + (_spi_task) ...
+  85      |    + (_std_task) ...
+          | 
+  86      + _ds2482_detect: (3)
+  87      |    + _ds2482_reset --> 5
+  88      |    + _ds2482_write_config: (5)
+  89      |    |    + _ds2482_reset --> 5
+  90      |    |    + _i2c_read --> 6
+  91      |    |    + _i2c_rep_start --> 10
+  92      |    |    + _i2c_start --> 12
+  93      |    |    + _i2c_write --> 18
+          |    | 
+          | 
+  94      + _ds2482_detect_bb: (3)
+  95      |    + _ds2482_reset_bb: (5)
+  96      |    |    + _i2c_read_bb: (5)
+  97      |    |    |    + _delay_usec: (8)
+  98      |    |    |    |    + _tmr2_val: (6)
+          |    |    |    | 
+          |    |    | 
+  99      |    |    + _i2c_rep_start_bb: (3)
+ 100      |    |    |    + _delay_usec --> 97
+ 101      |    |    |    + _i2c_start_bb: (3)
+ 102      |    |    |    |    + _delay_usec --> 97
+ 103      |    |    |    |    + _i2c_write_bb: (5)
+ 104      |    |    |    |    |    + _delay_usec --> 97
           |    |    |    |    | 
           |    |    |    | 
           |    |    | 
-  61      |    |    + _i2c_start_bb --> 57
-  62      |    |    + _i2c_stop_bb: (2)
-  63      |    |    |    + _delay_usec --> 53
+ 105      |    |    + _i2c_start_bb --> 101
+ 106      |    |    + _i2c_stop_bb: (2)
+ 107      |    |    |    + _delay_usec --> 97
           |    |    | 
-  64      |    |    + _i2c_write_bb --> 59
+ 108      |    |    + _i2c_write_bb --> 103
           |    | 
-  65      |    + _ds2482_write_config_bb: (5)
-  66      |    |    + _ds2482_reset_bb --> 51
-  67      |    |    + _i2c_read_bb --> 52
-  68      |    |    + _i2c_rep_start_bb --> 55
-  69      |    |    + _i2c_start_bb --> 57
-  70      |    |    + _i2c_stop_bb --> 62
-  71      |    |    + _i2c_write_bb --> 59
+ 109      |    + _ds2482_write_config_bb: (5)
+ 110      |    |    + _ds2482_reset_bb --> 95
+ 111      |    |    + _i2c_read_bb --> 96
+ 112      |    |    + _i2c_rep_start_bb --> 99
+ 113      |    |    + _i2c_start_bb --> 101
+ 114      |    |    + _i2c_stop_bb --> 106
+ 115      |    |    + _i2c_write_bb --> 103
           |    | 
           | 
-  72      + _eeprom_read_config: (6)
-  73      + _enable_task: (6)
-  74      |    + _strcmp --> 35
+ 116      + _eeprom_read_config: (6)
+ 117      + _enable_task: (6)
+ 118      |    + _strcmp --> 79
           | 
-  75      + _i2c_init: (3)
-  76      |    + _delay_usec --> 53
+ 119      + _i2c_init: (3)
+ 120      |    + _delay_usec --> 97
           | 
-  77      + _initialise_system_clock: (2)
-  78      + _nrf24_config: (2)
-  79      |    + _nrf24_configRegister: (4)
-  80      |    |    + _nrf24_csn: (2)
-  81      |    |    + _spi_transfer: (2)
-  82      |    |    |    + _spi_read: (4)
-  83      |    |    |    |    + _delay_usec --> 53
+ 121      + _initialise_system_clock: (2)
+ 122      + _nrf24_config: (2)
+ 123      |    + _nrf24_configRegister: (4)
+ 124      |    |    + _nrf24_csn: (2)
+ 125      |    |    + _spi_transfer: (2)
+ 126      |    |    |    + _spi_read: (4)
+ 127      |    |    |    |    + _delay_usec --> 97
           |    |    |    | 
-  84      |    |    |    + _spi_write: (3)
-  85      |    |    |    |    + _delay_usec --> 53
+ 128      |    |    |    + _spi_write: (3)
+ 129      |    |    |    |    + _delay_usec --> 97
           |    |    |    | 
           |    |    | 
           |    | 
-  86      |    + _nrf24_powerUpRx: (2)
-  87      |    |    + _nrf24_ce: (2)
-  88      |    |    + _nrf24_configRegister --> 79
-  89      |    |    + _nrf24_csn --> 80
-  90      |    |    + _spi_transfer --> 81
+ 130      |    + _nrf24_powerUpRx: (2)
+ 131      |    |    + _nrf24_ce: (2)
+ 132      |    |    + _nrf24_configRegister --> 123
+ 133      |    |    + _nrf24_csn --> 124
+ 134      |    |    + _spi_transfer --> 125
           |    | 
           | 
-  91      + _nrf24_init: (2)
-  92      |    + _nrf24_ce --> 87
-  93      |    + _nrf24_csn --> 80
-  94      |    + _spi_init: (2)
+ 135      + _nrf24_init: (2)
+ 136      |    + _nrf24_ce --> 131
+ 137      |    + _nrf24_csn --> 124
+ 138      |    + _spi_init: (2)
           | 
-  95      + _nrf24_rx_address: (4)
-  96      |    + _nrf24_ce --> 87
-  97      |    + _nrf24_writeRegister: (6)
-  98      |    |    + _nrf24_csn --> 80
-  99      |    |    + _nrf24_transmitSync: (6)
- 100      |    |    |    + _spi_transfer --> 81
+ 139      + _nrf24_rx_address: (4)
+ 140      |    + _nrf24_ce --> 131
+ 141      |    + _nrf24_writeRegister: (6)
+ 142      |    |    + _nrf24_csn --> 124
+ 143      |    |    + _nrf24_transmitSync: (6)
+ 144      |    |    |    + _spi_transfer --> 125
           |    |    | 
- 101      |    |    + _spi_transfer --> 81
+ 145      |    |    + _spi_transfer --> 125
           |    | 
           | 
- 102      + _nrf24_tx_address: (4)
- 103      |    + _nrf24_writeRegister --> 97
+ 146      + _nrf24_tx_address: (4)
+ 147      |    + _nrf24_writeRegister --> 141
           | 
- 104      + _scheduler_init: (2)
- 105      + _setup_gpio_ports: (2)
- 106      + _setup_timer2: (2)
+ 148      + _scheduler_init: (2)
+ 149      + _setup_gpio_ports: (2)
+ 150      + _setup_timer2: (2)
        
- 107 > _mcp23008_init: (3)
- 108      + _mcp230xx_write: (5)
- 109      |    + _i2c_start --> 15
- 110      |    + _i2c_stop --> 17
- 111      |    + _i2c_write --> 21
+ 151 > _mcp23008_init: (3)
+ 152      + _mcp230xx_write: (5)
+ 153      |    + _i2c_start --> 12
+ 154      |    + _i2c_stop --> 14
+ 155      |    + _i2c_write --> 18
           | 
        
- 112 > _mcp230xx_read: (5)
- 113      + _i2c_readN --> 11
- 114      + _i2c_rep_start --> 13
- 115      + _i2c_start --> 15
- 116      + _i2c_stop --> 17
- 117      + _i2c_write --> 21
+ 156 > _mcp230xx_read: (5)
+ 157      + _i2c_readN --> 8
+ 158      + _i2c_rep_start --> 10
+ 159      + _i2c_start --> 12
+ 160      + _i2c_stop --> 14
+ 161      + _i2c_write --> 18
        
- 118 > _nrf24_dataReady: (3)
- 119      + _nrf24_getStatus: (3)
- 120      |    + _nrf24_csn --> 80
- 121      |    + _spi_transfer --> 81
+ 162 > _nrf24_dataReady: (3)
+ 163      + _nrf24_getStatus: (3)
+ 164      |    + _nrf24_csn --> 124
+ 165      |    + _spi_transfer --> 125
           | 
- 122      + _nrf24_rxFifoEmpty: (3)
- 123      |    + _nrf24_readRegister: (6)
- 124      |    |    + _nrf24_csn --> 80
- 125      |    |    + _nrf24_transferSync: (8)
- 126      |    |    |    + _spi_transfer --> 81
+ 166      + _nrf24_rxFifoEmpty: (3)
+ 167      |    + _nrf24_readRegister: (6)
+ 168      |    |    + _nrf24_csn --> 124
+ 169      |    |    + _nrf24_transferSync: (8)
+ 170      |    |    |    + _spi_transfer --> 125
           |    |    | 
- 127      |    |    + _spi_transfer --> 81
+ 171      |    |    + _spi_transfer --> 125
           |    | 
           | 
        
- 128 > _nrf24_getData: (4)
- 129      + _nrf24_configRegister --> 79
- 130      + _nrf24_csn --> 80
- 131      + _nrf24_transferSync --> 125
- 132      + _spi_transfer --> 81
+ 172 > _nrf24_getData: (4)
+ 173      + _nrf24_configRegister --> 123
+ 174      + _nrf24_csn --> 124
+ 175      + _nrf24_transferSync --> 169
+ 176      + _spi_transfer --> 125
        
- 133 > _nrf24_payloadLength: (3)
- 134      + _nrf24_csn --> 80
- 135      + _spi_transfer --> 81
+ 177 > _nrf24_payloadLength: (3)
+ 178      + _nrf24_csn --> 124
+ 179      + _spi_transfer --> 125
        
- 136 > _nrf24_payload_length: (2)
+ 180 > _nrf24_payload_length: (2)
 
- 137 > _set_task_time_period: (8)
- 138      + _strcmp --> 35
+ 181 > _set_task_time_period: (8)
+ 182      + _strcmp --> 79
        
- 139 > f_NonHandledInterrup5: (6)
+ 183 > f_NonHandledInterrup5: (6)
 
- 140 > f_NonHandledInterrupt: (6)
+ 184 > f_NonHandledInterrupt: (6)
 
- 141   _ad_to_temp: (13)
+ 185   _OW_read_byte --> 4
 
- 142   _adc_task: (7)
- 143      + _ad_to_temp --> 141
- 144      + _eeprom_read_config --> 72
- 145      + _read_adc: (9)
+ 186   _OW_reset --> 35
+
+ 187   _OW_search --> 34
+
+ 188   _OW_touch_bit --> 53
+
+ 189   _OW_touch_byte --> 3
+
+ 190   _OW_write_byte --> 25
+
+ 191   _ad_to_temp: (13)
+
+ 192   _adc_task: (7)
+ 193      + _ad_to_temp --> 191
+ 194      + _eeprom_read_config --> 116
+ 195      + _read_adc: (9)
        
- 146   _add_task --> 32
+ 196   _add_task --> 76
 
- 147   _check_config_value: (10)
- 148      + _range: (8)
+ 197   _calc_crc8 --> 43
+
+ 198   _check_config_value: (10)
+ 199      + _range: (8)
        
- 149   _ctrl_task: (8)
- 150      + _eeprom_read_config --> 72
- 151      + _pid_control: (2)
- 152      |    + _eeprom_read_config --> 72
- 153      |    + _enable_cooling: (2)
- 154      |    + _enable_heating: (2)
- 155      |    + _init_pid: (15)
- 156      |    + _init_temp_delays: (2)
- 157      |    |    + _eeprom_read_config --> 72
+ 200   _ctrl_task: (8)
+ 201      + _eeprom_read_config --> 116
+ 202      + _fo433_fsm: (6)
+ 203      |    + _eeprom_read_config --> 116
+ 204      |    + _fo433_crc8: (6)
+          | 
+ 205      + _one_wire_task: (2)
+ 206      |    + _ds18b20_read: (18)
+ 207      |    |    + _OW_read_byte --> 4
+ 208      |    |    + _OW_reset --> 35
+ 209      |    |    + _OW_write_byte --> 25
+ 210      |    |    + _calc_crc8 --> 43
           |    | 
- 158      |    + _min_to_sec: (4)
- 159      |    |    + _eeprom_read_config --> 72
+ 211      |    + _ds18b20_start_conversion: (4)
+ 212      |    |    + _OW_reset --> 35
+ 213      |    |    + _OW_write_byte --> 25
           |    | 
- 160      |    + _pid_ctrl: (12)
           | 
- 161      + _temperature_control: (2)
- 162      |    + _enable_cooling --> 153
- 163      |    + _enable_heating --> 154
- 164      |    + _init_temp_delays --> 156
- 165      |    + _min_to_sec --> 158
+ 214      + _pid_control: (2)
+ 215      |    + _eeprom_read_config --> 116
+ 216      |    + _enable_cooling: (2)
+ 217      |    + _enable_heating: (2)
+ 218      |    + _init_pid: (15)
+ 219      |    + _init_temp_delays: (2)
+ 220      |    |    + _eeprom_read_config --> 116
+          |    | 
+ 221      |    + _min_to_sec: (4)
+ 222      |    |    + _eeprom_read_config --> 116
+          |    | 
+ 223      |    + _pid_ctrl: (12)
           | 
- 166      + _value_to_led: (6)
- 167      |    + _divu10: (12)
+ 224      + _temperature_control: (2)
+ 225      |    + _enable_cooling --> 216
+ 226      |    + _enable_heating --> 217
+ 227      |    + _init_temp_delays --> 219
+ 228      |    + _min_to_sec --> 221
           | 
-       
- 168   _delay_msec: (17)
- 169      + _millis: (6)
-       
- 170   _delay_usec --> 53
-
- 171   _disable_task --> 34
-
- 172   _dispatch_tasks --> 36
-
- 173   _divu10 --> 167
-
- 174   _ds2482_detect --> 42
-
- 175   _ds2482_detect_bb --> 50
-
- 176   _ds2482_reset --> 8
-
- 177   _ds2482_reset_bb --> 51
-
- 178   _ds2482_write_config --> 44
-
- 179   _ds2482_write_config_bb --> 65
-
- 180   _eeprom_read_config --> 72
-
- 181   _eeprom_write_config: (7)
- 182      + _eeprom_read_config --> 72
-       
- 183   _enable_cooling --> 153
-
- 184   _enable_heating --> 154
-
- 185   _enable_task --> 73
-
- 186   _i2c_delay --> 10
-
- 187   _i2c_init --> 75
-
- 188   _i2c_read --> 9
-
- 189   _i2c_readN --> 11
-
- 190   _i2c_read_bb --> 52
-
- 191   _i2c_rep_start --> 13
-
- 192   _i2c_rep_start_bb --> 55
-
- 193   _i2c_start --> 15
-
- 194   _i2c_start_bb --> 57
-
- 195   _i2c_stop --> 17
-
- 196   _i2c_stop_bb --> 62
-
- 197   _i2c_write --> 21
-
- 198   _i2c_write_bb --> 59
-
- 199   _init_pid --> 155
-
- 200   _init_temp_delays --> 156
-
- 201   _initialise_system_clock --> 77
-
- 202   _mcp230xx_write --> 108
-
- 203   _menu_fsm: (4)
- 204      + _check_config_value --> 147
- 205      + _eeprom_read_config --> 72
- 206      + _eeprom_write_config --> 181
- 207      + _prx_to_led: (4)
- 208      + _value_to_led --> 166
-       
- 209   _millis --> 169
-
- 210   _min_to_sec --> 158
-
- 211   _multiplexer --> 4
-
- 212   _nrf24_ce --> 87
-
- 213   _nrf24_config --> 78
-
- 214   _nrf24_configRegister --> 79
-
- 215   _nrf24_csn --> 80
-
- 216   _nrf24_getStatus --> 119
-
- 217   _nrf24_init --> 91
-
- 218   _nrf24_isSending: (3)
- 219      + _nrf24_getStatus --> 119
-       
- 220   _nrf24_lastMessageStatus: (3)
- 221      + _nrf24_getStatus --> 119
-       
- 222   _nrf24_powerDown: (2)
- 223      + _nrf24_ce --> 87
- 224      + _nrf24_configRegister --> 79
-       
- 225   _nrf24_powerUpRx --> 86
-
- 226   _nrf24_powerUpTx: (2)
- 227      + _nrf24_configRegister --> 79
-       
- 228   _nrf24_readRegister --> 123
-
- 229   _nrf24_retransmissionCount: (3)
- 230      + _nrf24_readRegister --> 123
-       
- 231   _nrf24_rxFifoEmpty --> 122
-
- 232   _nrf24_rx_address --> 95
-
- 233   _nrf24_send: (4)
- 234      + _nrf24_ce --> 87
- 235      + _nrf24_csn --> 80
- 236      + _nrf24_powerUpTx --> 226
- 237      + _nrf24_transmitSync --> 99
- 238      + _spi_transfer --> 81
-       
- 239   _nrf24_transferSync --> 125
-
- 240   _nrf24_transmitSync --> 99
-
- 241   _nrf24_tx_address --> 102
-
- 242   _nrf24_writeRegister --> 97
-
- 243   _pid_control --> 151
-
- 244   _pid_ctrl --> 160
-
- 245   _pid_to_time: (4)
-
- 246   _prfl_task: (2)
- 247      + _update_profile: (17)
- 248      |    + _eeprom_read_config --> 72
- 249      |    + _eeprom_write_config --> 181
+ 229      + _value_to_led: (6)
+ 230      |    + _divu10: (12)
           | 
        
- 250   _prx_to_led --> 207
-
- 251   _range --> 148
-
- 252   _read_adc --> 145
-
- 253   _read_buttons: (3)
- 254      + _restore_display_state: (2)
- 255      + _save_display_state: (2)
+ 231   _delay_msec: (17)
+ 232      + _millis: (6)
        
- 256   _recv_ack_bit --> 19
+ 233   _delay_usec --> 97
 
- 257   _restore_display_state --> 254
+ 234   _disable_task --> 78
 
- 258   _save_display_state --> 255
+ 235   _dispatch_tasks --> 80
 
- 259   _scheduler_init --> 104
+ 236   _divu10 --> 230
 
- 260   _scheduler_isr --> 5
+ 237   _ds18b20_read --> 206
 
- 261   _setup_gpio_ports --> 105
+ 238   _ds18b20_start_conversion --> 211
 
- 262   _setup_timer2 --> 106
+ 239   _ds2482_detect --> 86
 
- 263   _spi_init --> 94
+ 240   _ds2482_detect_bb --> 94
 
- 264   _spi_read --> 82
+ 241   _ds2482_reset --> 5
 
- 265   _spi_task: (11)
- 266      + _delay_msec --> 168
- 267      + _nrf24_isSending --> 218
- 268      + _nrf24_lastMessageStatus --> 220
- 269      + _nrf24_powerDown --> 222
- 270      + _nrf24_retransmissionCount --> 229
- 271      + _nrf24_send --> 233
+ 242   _ds2482_reset_bb --> 95
+
+ 243   _ds2482_search_triplet --> 44
+
+ 244   _ds2482_write_config --> 88
+
+ 245   _ds2482_write_config_bb --> 109
+
+ 246   _eeprom_read_config --> 116
+
+ 247   _eeprom_write_config: (7)
+ 248      + _eeprom_read_config --> 116
        
- 272   _spi_transfer --> 81
+ 249   _enable_cooling --> 216
 
- 273   _spi_write --> 84
+ 250   _enable_heating --> 217
 
- 274   _std_task: (2)
- 275      + _menu_fsm --> 203
- 276      + _pid_to_time --> 245
- 277      + _read_buttons --> 253
+ 251   _enable_task --> 117
+
+ 252   _fo433_crc8 --> 204
+
+ 253   _fo433_fsm --> 202
+
+ 254   _fo433_isr --> 67
+
+ 255   _i2c_delay --> 7
+
+ 256   _i2c_init --> 119
+
+ 257   _i2c_read --> 6
+
+ 258   _i2c_readN --> 8
+
+ 259   _i2c_read_bb --> 96
+
+ 260   _i2c_rep_start --> 10
+
+ 261   _i2c_rep_start_bb --> 99
+
+ 262   _i2c_start --> 12
+
+ 263   _i2c_start_bb --> 101
+
+ 264   _i2c_stop --> 14
+
+ 265   _i2c_stop_bb --> 106
+
+ 266   _i2c_write --> 18
+
+ 267   _i2c_write_bb --> 103
+
+ 268   _init_pid --> 218
+
+ 269   _init_temp_delays --> 219
+
+ 270   _initialise_system_clock --> 121
+
+ 271   _mcp230xx_write --> 152
+
+ 272   _menu_fsm: (4)
+ 273      + _check_config_value --> 198
+ 274      + _eeprom_read_config --> 116
+ 275      + _eeprom_write_config --> 247
+ 276      + _prx_to_led: (4)
+ 277      + _value_to_led --> 229
        
- 278   _strcmp --> 35
+ 278   _millis --> 232
 
- 279   _strncpy --> 33
+ 279   _min_to_sec --> 221
 
- 280   _temperature_control --> 161
+ 280   _multiplexer --> 68
 
- 281   _tmr2_val --> 54
+ 281   _nrf24_ce --> 131
 
- 282   _update_profile --> 247
+ 282   _nrf24_config --> 122
 
- 283   _value_to_led --> 166
+ 283   _nrf24_configRegister --> 123
+
+ 284   _nrf24_csn --> 124
+
+ 285   _nrf24_getStatus --> 163
+
+ 286   _nrf24_init --> 135
+
+ 287   _nrf24_isSending: (3)
+ 288      + _nrf24_getStatus --> 163
+       
+ 289   _nrf24_lastMessageStatus: (3)
+ 290      + _nrf24_getStatus --> 163
+       
+ 291   _nrf24_powerDown: (2)
+ 292      + _nrf24_ce --> 131
+ 293      + _nrf24_configRegister --> 123
+       
+ 294   _nrf24_powerUpRx --> 130
+
+ 295   _nrf24_powerUpTx: (2)
+ 296      + _nrf24_configRegister --> 123
+       
+ 297   _nrf24_readRegister --> 167
+
+ 298   _nrf24_retransmissionCount: (3)
+ 299      + _nrf24_readRegister --> 167
+       
+ 300   _nrf24_rxFifoEmpty --> 166
+
+ 301   _nrf24_rx_address --> 139
+
+ 302   _nrf24_send: (4)
+ 303      + _nrf24_ce --> 131
+ 304      + _nrf24_csn --> 124
+ 305      + _nrf24_powerUpTx --> 295
+ 306      + _nrf24_transmitSync --> 143
+ 307      + _spi_transfer --> 125
+       
+ 308   _nrf24_transferSync --> 169
+
+ 309   _nrf24_transmitSync --> 143
+
+ 310   _nrf24_tx_address --> 146
+
+ 311   _nrf24_writeRegister --> 141
+
+ 312   _one_wire_task --> 205
+
+ 313   _pid_control --> 214
+
+ 314   _pid_ctrl --> 223
+
+ 315   _pid_to_time: (4)
+
+ 316   _prfl_task: (2)
+ 317      + _update_profile: (17)
+ 318      |    + _eeprom_read_config --> 116
+ 319      |    + _eeprom_write_config --> 247
+          | 
+       
+ 320   _prx_to_led --> 276
+
+ 321   _range --> 199
+
+ 322   _read_adc --> 195
+
+ 323   _read_buttons: (3)
+ 324      + _restore_display_state: (2)
+ 325      + _save_display_state: (2)
+       
+ 326   _recv_ack_bit --> 16
+
+ 327   _restore_display_state --> 324
+
+ 328   _save_display_state --> 325
+
+ 329   _scheduler_init --> 148
+
+ 330   _scheduler_isr --> 69
+
+ 331   _setup_gpio_ports --> 149
+
+ 332   _setup_timer2 --> 150
+
+ 333   _spi_init --> 138
+
+ 334   _spi_read --> 126
+
+ 335   _spi_task: (11)
+ 336      + _delay_msec --> 231
+ 337      + _nrf24_isSending --> 287
+ 338      + _nrf24_lastMessageStatus --> 289
+ 339      + _nrf24_powerDown --> 291
+ 340      + _nrf24_retransmissionCount --> 298
+ 341      + _nrf24_send --> 302
+       
+ 342   _spi_transfer --> 125
+
+ 343   _spi_write --> 128
+
+ 344   _std_task: (2)
+ 345      + _menu_fsm --> 272
+ 346      + _pid_to_time --> 315
+ 347      + _read_buttons --> 323
+       
+ 348   _strcmp --> 79
+
+ 349   _strncpy --> 77
+
+ 350   _temperature_control --> 224
+
+ 351   _tmr2_val --> 98
+
+ 352   _update_profile --> 317
+
+ 353   _value_to_led --> 229
 
 
 
@@ -842,7 +983,7 @@ _I2C_CR1                     00005210   defined in Debug\adc.o
 _I2C_CR2                     00005211   defined in Debug\adc.o
 _I2C_DR                      00005216   defined in Debug\adc.o
 _I2C_FREQR                   00005212   defined in Debug\adc.o
-_I2C_IRQHandler              000085d1   defined in Debug\i2c.o section .text
+_I2C_IRQHandler              00008738   defined in Debug\i2c.o section .text
                                         used in Debug\stm8_interrupt_vector.o
 _I2C_ITR                     0000521a   defined in Debug\adc.o
 _I2C_OARH                    00005214   defined in Debug\adc.o
@@ -863,6 +1004,23 @@ _ITC_SPR8                    00007f77   defined in Debug\adc.o
 _IWDG_KR                     000050e0   defined in Debug\adc.o
 _IWDG_PR                     000050e1   defined in Debug\adc.o
 _IWDG_RLR                    000050e2   defined in Debug\adc.o
+_LastDeviceFlag              0000eb:0   defined in Debug\one_wire.o section .bit, initialized
+_LastDiscrepancy             00000048   defined in Debug\one_wire.o section .ubsct
+_LastFamilyDiscrepancy       00000046   defined in Debug\one_wire.o section .ubsct
+_OW_block                    000090b9   defined in Debug\one_wire.o section .text
+_OW_family_skip_setup        000091dc   defined in Debug\one_wire.o section .text
+_OW_first                    000090ec   defined in Debug\one_wire.o section .text
+_OW_next                     000090fa   defined in Debug\one_wire.o section .text
+_OW_read_bit                 00008fa9   defined in Debug\one_wire.o section .text
+_OW_read_byte                00009017   defined in Debug\one_wire.o section .text
+_OW_reset                    00008eae   defined in Debug\one_wire.o section .text
+_OW_search                   000091ec   defined in Debug\one_wire.o section .text
+_OW_target_setup             000091b9   defined in Debug\one_wire.o section .text
+_OW_touch_bit                00008f27   defined in Debug\one_wire.o section .text
+_OW_touch_byte               000090a0   defined in Debug\one_wire.o section .text
+_OW_verify                   000090fe   defined in Debug\one_wire.o section .text
+_OW_write_bit                00008f9f   defined in Debug\one_wire.o section .text
+_OW_write_byte               00008fb1   defined in Debug\one_wire.o section .text
 _PA_CR1                      00005003   defined in Debug\adc.o
 _PA_CR2                      00005004   defined in Debug\adc.o
 _PA_DDR                      00005002   defined in Debug\adc.o
@@ -908,12 +1066,13 @@ _PI_CR2                      0000502c   defined in Debug\adc.o
 _PI_DDR                      0000502a   defined in Debug\adc.o
 _PI_IDR                      00005029   defined in Debug\adc.o
 _PI_ODR                      00005028   defined in Debug\adc.o
+_ROM_NO                      0000004a   defined in Debug\one_wire.o section .ubsct
 _RST_SR                      000050b3   defined in Debug\adc.o
 _SPI_CR1                     00005200   defined in Debug\adc.o
 _SPI_CR2                     00005201   defined in Debug\adc.o
 _SPI_CRCPR                   00005205   defined in Debug\adc.o
 _SPI_DR                      00005204   defined in Debug\adc.o
-_SPI_Handler                 000090b0   defined in Debug\spi.o section .text
+_SPI_Handler                 00009778   defined in Debug\spi.o section .text
                                         used in Debug\stm8_interrupt_vector.o
 _SPI_ICR                     00005202   defined in Debug\adc.o
 _SPI_RXCRCR                  00005206   defined in Debug\adc.o
@@ -973,7 +1132,7 @@ _TIM2_IER                    00005301   defined in Debug\adc.o
 _TIM2_PSCR                   0000530c   defined in Debug\adc.o
 _TIM2_SR1                    00005302   defined in Debug\adc.o
 _TIM2_SR2                    00005303   defined in Debug\adc.o
-_TIM2_UPD_OVF_IRQHandler     00009200   defined in Debug\stc1000p.o section .text
+_TIM2_UPD_OVF_IRQHandler     000098c8   defined in Debug\stc1000p.o section .text
                                         used in Debug\stm8_interrupt_vector.o
 _TIM3_ARRH                   0000532b   defined in Debug\adc.o
 _TIM3_ARRL                   0000532c   defined in Debug\adc.o
@@ -1012,12 +1171,12 @@ _UART2_PSCR                  0000524b   defined in Debug\adc.o
 _UART2_SR                    00005240   defined in Debug\adc.o
 _WWDG_CR                     000050d1   defined in Debug\adc.o
 _WWDG_WR                     000050d2   defined in Debug\adc.o
-__buttons                    0000002c   defined in Debug\stc1000p_lib.o section .bsct, initialized
+__buttons                    00000036   defined in Debug\stc1000p_lib.o section .bsct, initialized
 __endmem                     000005ff   defined in command file
                                         *** not used ***
-__endzp                      000000cb   defined in command file section .ubsct
+__endzp                      000000eb   defined in command file section .ubsct
                                         used in C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Lib\crtsi0.sm8
-__idesc__                    0000818b   defined in linker section .init
+__idesc__                    0000818f   defined in linker section .init
                                         used in C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Lib\crtsi0.sm8
 __memory                     00000100   defined in command file section .bss
                                         used in C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Lib\crtsi0.sm8
@@ -1025,258 +1184,289 @@ __stack                      000007ff   defined in command file
                                         used in C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Lib\crtsi0.sm8
 __startmem                   00000100   defined in command file section .bss
                                         *** not used ***
-__stext                      000081cc   defined in C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Lib\crtsi0.sm8 section .text
+__stext                      000081db   defined in C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Lib\crtsi0.sm8 section .text
                                         used in Debug\stm8_interrupt_vector.o
 __vectab                     00008000   defined in Debug\stm8_interrupt_vector.o section .const
-_ad_ch                       0000cb:2   defined in Debug\stc1000p.o section .bit, initialized
-_ad_err1                     0000000c   defined in Debug\stc1000p.o section .bsct, initialized
-_ad_err2                     0000000d   defined in Debug\stc1000p.o section .bsct, initialized
+_ad_ch                       0000eb:3   defined in Debug\stc1000p.o section .bit, initialized
+_ad_err1                     00000013   defined in Debug\stc1000p.o section .bsct, initialized
+_ad_err2                     00000014   defined in Debug\stc1000p.o section .bsct, initialized
 _ad_lookup_c                 000080c0   defined in Debug\adc.o section .const
 _ad_lookup_f                 00008080   defined in Debug\adc.o section .const
-_ad_ntc1                     0000000e   defined in Debug\stc1000p.o section .bsct, initialized
-_ad_ntc2                     00000010   defined in Debug\stc1000p.o section .bsct, initialized
-_ad_to_temp                  0000829c   defined in Debug\adc.o section .text
+_ad_ntc1                     00000015   defined in Debug\stc1000p.o section .bsct, initialized
+_ad_ntc2                     00000017   defined in Debug\stc1000p.o section .bsct, initialized
+_ad_to_temp                  000082ab   defined in Debug\adc.o section .text
                                         used in Debug\stc1000p.o
-_adc_task                    0000939e   defined in Debug\stc1000p.o section .text
-_add_task                    00008f00   defined in Debug\scheduler.o section .text
+_adc_task                    00009a7c   defined in Debug\stc1000p.o section .text
+_add_task                    000095c8   defined in Debug\scheduler.o section .text
                                         used in Debug\stc1000p.o
-_check_config_value          000099cd   defined in Debug\stc1000p_lib.o section .text
-_config_item                 0000002a   defined in Debug\stc1000p_lib.o section .bsct, initialized
-_config_value                000000bc   defined in Debug\stc1000p_lib.o section .ubsct
-_cooling_delay               00000024   defined in Debug\stc1000p_lib.o section .bsct, initialized
+_calc_crc8                   00009323   defined in Debug\one_wire.o section .text
+_check_config_value          0000a0dc   defined in Debug\stc1000p_lib.o section .text
+_config_item                 00000034   defined in Debug\stc1000p_lib.o section .bsct, initialized
+_config_value                000000dc   defined in Debug\stc1000p_lib.o section .ubsct
+_cooling_delay               0000002e   defined in Debug\stc1000p_lib.o section .bsct, initialized
                                         used in Debug\stc1000p.o
-_ctrl_task                   0000948f   defined in Debug\stc1000p.o section .text
-_curr_dur                    0000002e   defined in Debug\stc1000p_lib.o section .bsct, initialized
-_delay_msec                  0000835a   defined in Debug\delay.o section .text
+_crc8                        00000045   defined in Debug\one_wire.o section .ubsct
+_ctrl_task                   00009b6d   defined in Debug\stc1000p.o section .text
+_curr_dur                    00000038   defined in Debug\stc1000p_lib.o section .bsct, initialized
+_delay_msec                  00008369   defined in Debug\delay.o section .text
                                         used in Debug\stc1000p.o
-_delay_usec                  000083fc   defined in Debug\delay.o section .text
+_delay_usec                  0000840b   defined in Debug\delay.o section .text
                                         used in Debug\i2c.o Debug\spi.o
-_disable_task                00008ffc   defined in Debug\scheduler.o section .text
+_disable_task                000096c4   defined in Debug\scheduler.o section .text
                                         used in Debug\stc1000p.o
-_dispatch_tasks              00008eb5   defined in Debug\scheduler.o section .text
+_dispatch_tasks              0000957d   defined in Debug\scheduler.o section .text
                                         used in Debug\stc1000p.o
-_divu10                      00009731   defined in Debug\stc1000p_lib.o section .text
-_ds2482_detect               000089f1   defined in Debug\i2c.o section .text
+_divu10                      00009e40   defined in Debug\stc1000p_lib.o section .text
+_ds18b20_read                0000936b   defined in Debug\one_wire.o section .text
                                         used in Debug\stc1000p.o
-_ds2482_detect_bb            00008a0c   defined in Debug\i2c.o section .text
+_ds18b20_start_conversion    00009348   defined in Debug\one_wire.o section .text
                                         used in Debug\stc1000p.o
-_ds2482_reset                000088e7   defined in Debug\i2c.o section .text
-_ds2482_reset_bb             00008922   defined in Debug\i2c.o section .text
-_ds2482_search_triplet       00008a28   defined in Debug\i2c.o section .text
-_ds2482_write_config         000089ae   defined in Debug\i2c.o section .text
-_ds2482_write_config_bb      00008966   defined in Debug\i2c.o section .text
+_ds2482_detect               00008b58   defined in Debug\i2c.o section .text
+                                        used in Debug\stc1000p.o
+_ds2482_detect_bb            00008b73   defined in Debug\i2c.o section .text
+                                        used in Debug\stc1000p.o
+_ds2482_reset                00008a4e   defined in Debug\i2c.o section .text
+                                        used in Debug\one_wire.o
+_ds2482_reset_bb             00008a89   defined in Debug\i2c.o section .text
+_ds2482_search_triplet       00008b8f   defined in Debug\i2c.o section .text
+                                        used in Debug\one_wire.o
+_ds2482_write_config         00008b15   defined in Debug\i2c.o section .text
+_ds2482_write_config_bb      00008acd   defined in Debug\i2c.o section .text
 _eedata                      00004000   defined in Debug\stc1000p_lib.o section .eeprom
                                         used in Debug\stc1000p.o
-_eeprom_read_config          00008421   defined in Debug\eep.o section .text
-                                        used in Debug\stc1000p.o
+_eeprom_read_config          00008430   defined in Debug\eep.o section .text
+                                        used in Debug\fo433.o Debug\stc1000p.o
                                                 Debug\stc1000p_lib.o
-_eeprom_write_config         00008458   defined in Debug\eep.o section .text
+_eeprom_write_config         00008467   defined in Debug\eep.o section .text
                                         used in Debug\stc1000p_lib.o
-_enable_cooling              0000a12c   defined in Debug\stc1000p_lib.o section .text
-_enable_heating              0000a13f   defined in Debug\stc1000p_lib.o section .text
-_enable_task                 00008fa1   defined in Debug\scheduler.o section .text
+_enable_cooling              0000a83b   defined in Debug\stc1000p_lib.o section .text
+_enable_heating              0000a84e   defined in Debug\stc1000p_lib.o section .text
+_enable_task                 00009669   defined in Debug\scheduler.o section .text
                                         used in Debug\stc1000p.o
-_exit                        0000821a   defined in C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Lib\crtsi0.sm8 section .text
-_fahrenheit                  0000cb:5   defined in Debug\stc1000p_lib.o section .bit, initialized
+_exit                        00008229   defined in C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Lib\crtsi0.sm8 section .text
+_fahrenheit                  0000eb:7   defined in Debug\stc1000p_lib.o section .bit, initialized
                                         used in Debug\adc.o Debug\stc1000p.o
-_heating_delay               00000026   defined in Debug\stc1000p_lib.o section .bsct, initialized
+_fo433_bit                   00000005   defined in Debug\fo433.o section .bsct, initialized
+_fo433_byte                  00000006   defined in Debug\fo433.o section .bsct, initialized
+_fo433_crc8                  00008535   defined in Debug\fo433.o section .text
+_fo433_data                  0000003d   defined in Debug\fo433.o section .ubsct
+_fo433_fsm                   0000855f   defined in Debug\fo433.o section .text
                                         used in Debug\stc1000p.o
-_hysteresis                  000000b7   defined in Debug\stc1000p_lib.o section .ubsct
-_hysteresis2                 000000b5   defined in Debug\stc1000p_lib.o section .ubsct
-_i2c_delay                   00008492   defined in Debug\i2c.o section .text
-_i2c_init                    000085d2   defined in Debug\i2c.o section .text
+_fo433_isr                   000084a1   defined in Debug\fo433.o section .text
                                         used in Debug\stc1000p.o
-_i2c_read                    000086d7   defined in Debug\i2c.o section .text
-_i2c_readN                   000086fc   defined in Debug\i2c.o section .text
-_i2c_read_bb                 00008513   defined in Debug\i2c.o section .text
-_i2c_rep_start               00008675   defined in Debug\i2c.o section .text
-_i2c_rep_start_bb            000085aa   defined in Debug\i2c.o section .text
-_i2c_start                   00008640   defined in Debug\i2c.o section .text
-_i2c_start_bb                00008583   defined in Debug\i2c.o section .text
-_i2c_stop                    000086a0   defined in Debug\i2c.o section .text
-_i2c_stop_bb                 000085bc   defined in Debug\i2c.o section .text
-_i2c_write                   000086b7   defined in Debug\i2c.o section .text
-_i2c_write_bb                0000849f   defined in Debug\i2c.o section .text
-_init_pid                    00008d47   defined in Debug\pid.o section .text
+_fo433_sec_count             00000008   defined in Debug\fo433.o section .bsct, initialized
+_fo433_start                 00000007   defined in Debug\fo433.o section .bsct, initialized
+_fo433_std                   00000004   defined in Debug\fo433.o section .bsct, initialized
+_fo433_tmr                   0000000a   defined in Debug\fo433.o section .bsct, initialized
+_heating_delay               00000030   defined in Debug\stc1000p_lib.o section .bsct, initialized
+                                        used in Debug\stc1000p.o
+_hysteresis                  000000d7   defined in Debug\stc1000p_lib.o section .ubsct
+_hysteresis2                 000000d5   defined in Debug\stc1000p_lib.o section .ubsct
+_i2c_delay                   000085f9   defined in Debug\i2c.o section .text
+_i2c_init                    00008739   defined in Debug\i2c.o section .text
+                                        used in Debug\stc1000p.o
+_i2c_read                    0000883e   defined in Debug\i2c.o section .text
+                                        used in Debug\one_wire.o
+_i2c_readN                   00008863   defined in Debug\i2c.o section .text
+_i2c_read_bb                 0000867a   defined in Debug\i2c.o section .text
+_i2c_rep_start               000087dc   defined in Debug\i2c.o section .text
+                                        used in Debug\one_wire.o
+_i2c_rep_start_bb            00008711   defined in Debug\i2c.o section .text
+_i2c_start                   000087a7   defined in Debug\i2c.o section .text
+                                        used in Debug\one_wire.o
+_i2c_start_bb                000086ea   defined in Debug\i2c.o section .text
+_i2c_stop                    00008807   defined in Debug\i2c.o section .text
+                                        used in Debug\one_wire.o
+_i2c_stop_bb                 00008723   defined in Debug\i2c.o section .text
+_i2c_write                   0000881e   defined in Debug\i2c.o section .text
+                                        used in Debug\one_wire.o
+_i2c_write_bb                00008606   defined in Debug\i2c.o section .text
+_init_pid                    0000940f   defined in Debug\pid.o section .text
                                         used in Debug\stc1000p_lib.o
-_init_temp_delays            0000a0f9   defined in Debug\stc1000p_lib.o section .text
-_initialise_system_clock     00009265   defined in Debug\stc1000p.o section .text
-_kc                          00000004   defined in Debug\pid.o section .bsct, initialized
+_init_temp_delays            0000a808   defined in Debug\stc1000p_lib.o section .text
+_initialise_system_clock     00009943   defined in Debug\stc1000p.o section .text
+_kc                          0000000b   defined in Debug\pid.o section .bsct, initialized
                                         used in Debug\stc1000p_lib.o
-_kd                          0000003c   defined in Debug\pid.o section .ubsct
-_key_held_tmr                000000bb   defined in Debug\stc1000p_lib.o section .ubsct
-_ki                          00000040   defined in Debug\pid.o section .ubsct
-_led_01                      000000be   defined in Debug\stc1000p_lib.o section .ubsct
+_kd                          0000005a   defined in Debug\pid.o section .ubsct
+_key_held_tmr                000000db   defined in Debug\stc1000p_lib.o section .ubsct
+_ki                          0000005e   defined in Debug\pid.o section .ubsct
+_led_01                      000000de   defined in Debug\stc1000p_lib.o section .ubsct
                                         used in Debug\stc1000p.o
-_led_1                       000000bf   defined in Debug\stc1000p_lib.o section .ubsct
+_led_1                       000000df   defined in Debug\stc1000p_lib.o section .ubsct
                                         used in Debug\stc1000p.o
-_led_10                      000000c0   defined in Debug\stc1000p_lib.o section .ubsct
+_led_10                      000000e0   defined in Debug\stc1000p_lib.o section .ubsct
                                         used in Debug\stc1000p.o
-_led_e                       00000023   defined in Debug\stc1000p_lib.o section .bsct, initialized
+_led_e                       0000002d   defined in Debug\stc1000p_lib.o section .bsct, initialized
                                         used in Debug\stc1000p.o
 _led_lookup                  0000811b   defined in Debug\stc1000p_lib.o section .const
-_lm92_read                   000087dc   defined in Debug\i2c.o section .text
-_m_countdown                 0000002b   defined in Debug\stc1000p_lib.o section .bsct, initialized
-_main                        00009659   defined in Debug\stc1000p.o section .text
+_lm92_read                   00008943   defined in Debug\i2c.o section .text
+_m_countdown                 00000035   defined in Debug\stc1000p_lib.o section .bsct, initialized
+_main                        00009d68   defined in Debug\stc1000p.o section .text
                                         used in C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Lib\crtsi0.sm8
-_max_tasks                   0000000b   defined in Debug\scheduler.o section .bsct, initialized
-_mcp23008_init               0000885e   defined in Debug\i2c.o section .text
-_mcp230xx_read               00008883   defined in Debug\i2c.o section .text
-_mcp230xx_write              000088ba   defined in Debug\i2c.o section .text
+_max_tasks                   00000012   defined in Debug\scheduler.o section .bsct, initialized
+_mcp23008_init               000089c5   defined in Debug\i2c.o section .text
+_mcp230xx_read               000089ea   defined in Debug\i2c.o section .text
+_mcp230xx_write              00008a21   defined in Debug\i2c.o section .text
 _menu                        00008125   defined in Debug\stc1000p_lib.o section .const
-_menu_fsm                    00009be2   defined in Debug\stc1000p_lib.o section .text
+_menu_fsm                    0000a2f1   defined in Debug\stc1000p_lib.o section .text
                                         used in Debug\stc1000p.o
-_menu_is_idle                0000cb:3   defined in Debug\stc1000p_lib.o section .bit, initialized
+_menu_is_idle                0000eb:5   defined in Debug\stc1000p_lib.o section .bit, initialized
                                         used in Debug\stc1000p.o
-_menu_item                   00000029   defined in Debug\stc1000p_lib.o section .bsct, initialized
-_menustate                   00000028   defined in Debug\stc1000p_lib.o section .bsct, initialized
-_millis                      00008344   defined in Debug\delay.o section .text
-_min_to_sec                  0000a0da   defined in Debug\stc1000p_lib.o section .text
-_minutes                     0000cb:6   defined in Debug\stc1000p_lib.o section .bit, initialized
+_menu_item                   00000033   defined in Debug\stc1000p_lib.o section .bsct, initialized
+_menustate                   00000032   defined in Debug\stc1000p_lib.o section .bsct, initialized
+_millis                      00008353   defined in Debug\delay.o section .text
+_min_to_sec                  0000a7e9   defined in Debug\stc1000p_lib.o section .text
+_minutes                     0000ec:0   defined in Debug\stc1000p_lib.o section .bit, initialized
                                         used in Debug\stc1000p.o
-_mpx_nr                      00000012   defined in Debug\stc1000p.o section .bsct, initialized
-_multiplexer                 0000911d   defined in Debug\stc1000p.o section .text
-_nrf24_ce                    00008d27   defined in Debug\nrf24_stm8_specific.o section .text
+_mpx_nr                      00000019   defined in Debug\stc1000p.o section .bsct, initialized
+_msec051                     0000eb:4   defined in Debug\stc1000p.o section .bit, initialized
+_multiplexer                 000097e5   defined in Debug\stc1000p.o section .text
+_nrf24_ce                    00008e8e   defined in Debug\nrf24_stm8_specific.o section .text
                                         used in Debug\nrf24.o
-_nrf24_config                00008a9f   defined in Debug\nrf24.o section .text
+_nrf24_config                00008c06   defined in Debug\nrf24.o section .text
                                         used in Debug\stc1000p.o
-_nrf24_configRegister        00008cbb   defined in Debug\nrf24.o section .text
-_nrf24_csn                   00008d11   defined in Debug\nrf24_stm8_specific.o section .text
+_nrf24_configRegister        00008e22   defined in Debug\nrf24.o section .text
+_nrf24_csn                   00008e78   defined in Debug\nrf24_stm8_specific.o section .text
                                         used in Debug\nrf24.o
-_nrf24_dataReady             00008b2d   defined in Debug\nrf24.o section .text
-_nrf24_getData               00008b7b   defined in Debug\nrf24.o section .text
-_nrf24_getStatus             00008c01   defined in Debug\nrf24.o section .text
-_nrf24_init                  00008d35   defined in Debug\nrf24_stm8_specific.o section .text
+_nrf24_dataReady             00008c94   defined in Debug\nrf24.o section .text
+_nrf24_getData               00008ce2   defined in Debug\nrf24.o section .text
+_nrf24_getStatus             00008d68   defined in Debug\nrf24.o section .text
+_nrf24_init                  00008e9c   defined in Debug\nrf24_stm8_specific.o section .text
                                         used in Debug\stc1000p.o
-_nrf24_isSending             00008bed   defined in Debug\nrf24.o section .text
+_nrf24_isSending             00008d54   defined in Debug\nrf24.o section .text
                                         used in Debug\stc1000p.o
-_nrf24_lastMessageStatus     00008c17   defined in Debug\nrf24.o section .text
+_nrf24_lastMessageStatus     00008d7e   defined in Debug\nrf24.o section .text
                                         used in Debug\stc1000p.o
-_nrf24_payloadLength         00008b61   defined in Debug\nrf24.o section .text
-_nrf24_payload_length        00008b11   defined in Debug\nrf24.o section .text
-_nrf24_powerDown             00008c63   defined in Debug\nrf24.o section .text
+_nrf24_payloadLength         00008cc8   defined in Debug\nrf24.o section .text
+_nrf24_payload_length        00008c78   defined in Debug\nrf24.o section .text
+_nrf24_powerDown             00008dca   defined in Debug\nrf24.o section .text
                                         used in Debug\stc1000p.o
-_nrf24_powerUpRx             00008c36   defined in Debug\nrf24.o section .text
-_nrf24_powerUpTx             00008c58   defined in Debug\nrf24.o section .text
-_nrf24_readRegister          00008cd5   defined in Debug\nrf24.o section .text
-_nrf24_retransmissionCount   00008b9f   defined in Debug\nrf24.o section .text
+_nrf24_powerUpRx             00008d9d   defined in Debug\nrf24.o section .text
+_nrf24_powerUpTx             00008dbf   defined in Debug\nrf24.o section .text
+_nrf24_readRegister          00008e3c   defined in Debug\nrf24.o section .text
+_nrf24_retransmissionCount   00008d06   defined in Debug\nrf24.o section .text
                                         used in Debug\stc1000p.o
-_nrf24_rxFifoEmpty           00008b4b   defined in Debug\nrf24.o section .text
-_nrf24_rx_address            00008af9   defined in Debug\nrf24.o section .text
+_nrf24_rxFifoEmpty           00008cb2   defined in Debug\nrf24.o section .text
+_nrf24_rx_address            00008c60   defined in Debug\nrf24.o section .text
                                         used in Debug\stc1000p.o
-_nrf24_send                  00008bb9   defined in Debug\nrf24.o section .text
+_nrf24_send                  00008d20   defined in Debug\nrf24.o section .text
                                         used in Debug\stc1000p.o
-_nrf24_transferSync          00008c6d   defined in Debug\nrf24.o section .text
-_nrf24_transmitSync          00008c9b   defined in Debug\nrf24.o section .text
-_nrf24_tx_address            00008b14   defined in Debug\nrf24.o section .text
+_nrf24_transferSync          00008dd4   defined in Debug\nrf24.o section .text
+_nrf24_transmitSync          00008e02   defined in Debug\nrf24.o section .text
+_nrf24_tx_address            00008c7b   defined in Debug\nrf24.o section .text
                                         used in Debug\stc1000p.o
-_nrf24_writeRegister         00008cf4   defined in Debug\nrf24.o section .text
-_payload_len                 00000033   defined in Debug\nrf24.o section .ubsct
-_pid_control                 0000a225   defined in Debug\stc1000p_lib.o section .text
+_nrf24_writeRegister         00008e5b   defined in Debug\nrf24.o section .text
+_one_wire_task               00009d3d   defined in Debug\stc1000p.o section .text
+_payload_len                 00000043   defined in Debug\nrf24.o section .ubsct
+_pid_control                 0000a934   defined in Debug\stc1000p_lib.o section .text
                                         used in Debug\stc1000p.o
-_pid_ctrl                    00008dba   defined in Debug\pid.o section .text
+_pid_ctrl                    00009482   defined in Debug\pid.o section .text
                                         used in Debug\stc1000p_lib.o
-_pid_out                     00000030   defined in Debug\stc1000p_lib.o section .bsct, initialized
+_pid_out                     0000003a   defined in Debug\stc1000p_lib.o section .bsct, initialized
                                         used in Debug\stc1000p.o
-_pid_to_time                 00009422   defined in Debug\stc1000p.o section .text
-_portc                       000000b4   defined in Debug\stc1000p_lib.o section .ubsct
-_portd                       000000b3   defined in Debug\stc1000p_lib.o section .ubsct
-_portg                       000000b2   defined in Debug\stc1000p_lib.o section .ubsct
-_pp                          00000038   defined in Debug\pid.o section .ubsct
-_prfl_task                   00009609   defined in Debug\stc1000p.o section .text
-_probe2                      0000cb:0   defined in Debug\stc1000p.o section .bit, initialized
+_pid_to_time                 00009b00   defined in Debug\stc1000p.o section .text
+_portc                       000000d4   defined in Debug\stc1000p_lib.o section .ubsct
+_portd                       000000d3   defined in Debug\stc1000p_lib.o section .ubsct
+_portg                       000000d2   defined in Debug\stc1000p_lib.o section .ubsct
+_pp                          00000056   defined in Debug\pid.o section .ubsct
+_prfl_task                   00009ced   defined in Debug\stc1000p.o section .text
+_probe2                      0000eb:1   defined in Debug\stc1000p.o section .bit, initialized
                                         used in Debug\stc1000p_lib.o
-_prx_to_led                  00009782   defined in Debug\stc1000p_lib.o section .text
-_pwr_on                      0000cb:4   defined in Debug\stc1000p_lib.o section .bit, initialized
+_prx_to_led                  00009e91   defined in Debug\stc1000p_lib.o section .text
+_pwr_on                      0000eb:6   defined in Debug\stc1000p_lib.o section .bit, initialized
                                         used in Debug\stc1000p.o
-_pwr_on_tmr                  00000013   defined in Debug\stc1000p.o section .bsct, initialized
-_range                       000099b3   defined in Debug\stc1000p_lib.o section .text
-_read_adc                    0000821c   defined in Debug\adc.o section .text
+_pwr_on_tmr                  0000001a   defined in Debug\stc1000p.o section .bsct, initialized
+_range                       0000a0c2   defined in Debug\stc1000p_lib.o section .text
+_read_adc                    0000822b   defined in Debug\adc.o section .text
                                         used in Debug\stc1000p.o
-_read_buttons                00009ba9   defined in Debug\stc1000p_lib.o section .text
+_read_buttons                0000a2b8   defined in Debug\stc1000p_lib.o section .text
                                         used in Debug\stc1000p.o
-_recv_ack_bit                0000860f   defined in Debug\i2c.o section .text
-_restore_display_state       00009b53   defined in Debug\stc1000p_lib.o section .text
-_rx_address                  0000001a   defined in Debug\stc1000p.o section .bsct, initialized
-_save_display_state          00009b14   defined in Debug\stc1000p_lib.o section .text
-_scheduler_init              00008e4b   defined in Debug\scheduler.o section .text
+_recv_ack_bit                00008776   defined in Debug\i2c.o section .text
+_restore_display_state       0000a262   defined in Debug\stc1000p_lib.o section .text
+_rx_address                  00000022   defined in Debug\stc1000p.o section .bsct, initialized
+_save_display_state          0000a223   defined in Debug\stc1000p_lib.o section .text
+_scheduler_init              00009513   defined in Debug\scheduler.o section .text
                                         used in Debug\stc1000p.o
-_scheduler_isr               00008e54   defined in Debug\scheduler.o section .text
+_scheduler_isr               0000951c   defined in Debug\scheduler.o section .text
                                         used in Debug\stc1000p.o
-_sensor2_selected            0000002d   defined in Debug\stc1000p_lib.o section .bsct, initialized
+_sensor2_selected            00000037   defined in Debug\stc1000p_lib.o section .bsct, initialized
                                         used in Debug\stc1000p.o
-_set_task_time_period        00009057   defined in Debug\scheduler.o section .text
-_setpoint                    000000b9   defined in Debug\stc1000p_lib.o section .ubsct
+_set_task_time_period        0000971f   defined in Debug\scheduler.o section .text
+_setpoint                    000000d9   defined in Debug\stc1000p_lib.o section .ubsct
                                         used in Debug\stc1000p.o
-_setup_gpio_ports            000092b1   defined in Debug\stc1000p.o section .text
-_setup_timer2                0000929c   defined in Debug\stc1000p.o section .text
-_show_sa_alarm               0000cb:1   defined in Debug\stc1000p.o section .bit, initialized
-_spi_error                   000000ad   defined in Debug\spi.o section .ubsct
-_spi_init                    000090bb   defined in Debug\spi.o section .text
+_setup_gpio_ports            0000998f   defined in Debug\stc1000p.o section .text
+_setup_timer2                0000997a   defined in Debug\stc1000p.o section .text
+_short_detected              00000044   defined in Debug\one_wire.o section .ubsct
+_show_sa_alarm               0000eb:2   defined in Debug\stc1000p.o section .bit, initialized
+_spi_error                   000000cb   defined in Debug\spi.o section .ubsct
+_spi_init                    00009783   defined in Debug\spi.o section .text
                                         used in Debug\nrf24_stm8_specific.o
-_spi_read                    00009101   defined in Debug\spi.o section .text
+_spi_read                    000097c9   defined in Debug\spi.o section .text
                                         used in Debug\nrf24_stm8_specific.o
-_spi_task                    00009625   defined in Debug\stc1000p.o section .text
-_spi_transfer                00008d40   defined in Debug\nrf24_stm8_specific.o section .text
+_spi_task                    00009d09   defined in Debug\stc1000p.o section .text
+_spi_transfer                00008ea7   defined in Debug\nrf24_stm8_specific.o section .text
                                         used in Debug\nrf24.o
-_spi_write                   000090cc   defined in Debug\spi.o section .text
+_spi_write                   00009794   defined in Debug\spi.o section .text
                                         used in Debug\nrf24_stm8_specific.o
-_std_task                    00009486   defined in Debug\stc1000p.o section .text
-_strcmp                      0000a2fe   defined in (C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Lib\libis0.sm8)strcmp0.o section .text
+_std_task                    00009b64   defined in Debug\stc1000p.o section .text
+_strcmp                      0000aa0d   defined in (C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Lib\libis0.sm8)strcmp0.o section .text
                                         used in Debug\scheduler.o
-_strncpy                     0000a311   defined in (C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Lib\libis0.sm8)strncp.o section .text
+_strncpy                     0000aa20   defined in (C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Lib\libis0.sm8)strncp.o section .text
                                         used in Debug\scheduler.o
 _t2_millis                   00000000   defined in Debug\delay.o section .bsct, initialized
                                         used in Debug\stc1000p.o
-_task_list                   00000044   defined in Debug\scheduler.o section .ubsct
-_td                          00000008   defined in Debug\pid.o section .bsct, initialized
+_task_list                   00000062   defined in Debug\scheduler.o section .ubsct
+_td                          0000000f   defined in Debug\pid.o section .bsct, initialized
                                         used in Debug\stc1000p_lib.o
-_temp_ntc1                   000000b0   defined in Debug\stc1000p.o section .ubsct
+_temp1_ow_84                 000000cc   defined in Debug\stc1000p.o section .ubsct
+_temp1_ow_err                0000001c   defined in Debug\stc1000p.o section .bsct, initialized
+_temp_ntc1                   000000d0   defined in Debug\stc1000p.o section .ubsct
+                                        used in Debug\fo433.o
+                                                Debug\stc1000p_lib.o
+_temp_ntc2                   000000ce   defined in Debug\stc1000p.o section .ubsct
                                         used in Debug\stc1000p_lib.o
-_temp_ntc2                   000000ae   defined in Debug\stc1000p.o section .ubsct
-                                        used in Debug\stc1000p_lib.o
-_temperature_control         0000a152   defined in Debug\stc1000p_lib.o section .text
+_temperature_control         0000a861   defined in Debug\stc1000p_lib.o section .text
                                         used in Debug\stc1000p.o
-_ti                          00000006   defined in Debug\pid.o section .bsct, initialized
+_ti                          0000000d   defined in Debug\pid.o section .bsct, initialized
                                         used in Debug\stc1000p_lib.o
-_tmr2_val                    000083d0   defined in Debug\delay.o section .text
-_ts                          0000000a   defined in Debug\pid.o section .bsct, initialized
+_tmr2_val                    000083df   defined in Debug\delay.o section .text
+_ts                          00000011   defined in Debug\pid.o section .bsct, initialized
                                         used in Debug\stc1000p.o
                                                 Debug\stc1000p_lib.o
-_tx_address                  00000015   defined in Debug\stc1000p.o section .bsct, initialized
-_update_profile              0000987f   defined in Debug\stc1000p_lib.o section .text
+_tx_address                  0000001d   defined in Debug\stc1000p.o section .bsct, initialized
+_update_profile              00009f8e   defined in Debug\stc1000p_lib.o section .text
                                         used in Debug\stc1000p.o
-_value_to_led                000097d0   defined in Debug\stc1000p_lib.o section .text
+_value_to_led                00009edf   defined in Debug\stc1000p_lib.o section .text
                                         used in Debug\stc1000p.o
-_yk_1                        00000036   defined in Debug\pid.o section .ubsct
-_yk_2                        00000034   defined in Debug\pid.o section .ubsct
-c_cmulx                      0000a337   defined in (C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Lib\libm0.sm8)cmulx.o section .text
+_yk_1                        00000054   defined in Debug\pid.o section .ubsct
+_yk_2                        00000052   defined in Debug\pid.o section .ubsct
+c_cmulx                      0000aa46   defined in (C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Lib\libm0.sm8)cmulx.o section .text
                                         used in Debug\pid.o
-c_divsl                      0000a486   defined in (C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Lib\libm0.sm8)ldiv.o section .text
+c_divsl                      0000ab95   defined in (C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Lib\libm0.sm8)ldiv.o section .text
                                         *** not used ***
-c_divul                      0000a49d   defined in (C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Lib\libm0.sm8)ldiv.o section .text
+c_divul                      0000abac   defined in (C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Lib\libm0.sm8)ldiv.o section .text
                                         used in (C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Lib\libm0.sm8)ludiv.o
-c_itolx                      0000a34b   defined in (C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Lib\libm0.sm8)itolx.o section .text
+c_itolx                      0000aa5a   defined in (C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Lib\libm0.sm8)itolx.o section .text
                                         used in Debug\adc.o Debug\pid.o
                                                 Debug\stc1000p_lib.o
-c_lcmp                       0000a359   defined in (C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Lib\libm0.sm8)lcmp.o section .text
+c_lcmp                       0000aa68   defined in (C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Lib\libm0.sm8)lcmp.o section .text
                                         used in Debug\delay.o
-c_lgadc                      0000a379   defined in (C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Lib\libm0.sm8)lgadc.o section .text
+c_lgadc                      0000aa88   defined in (C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Lib\libm0.sm8)lgadc.o section .text
                                         used in Debug\delay.o Debug\stc1000p.o
-c_lgadd                      0000a389   defined in (C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Lib\libm0.sm8)lgadd.o section .text
+c_lgadd                      0000aa98   defined in (C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Lib\libm0.sm8)lgadd.o section .text
                                         used in Debug\adc.o Debug\pid.o
                                                 Debug\stc1000p_lib.o
-c_lgneg                      0000a571   defined in (C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Lib\libm0.sm8)lgneg.o section .text
+c_lgneg                      0000ac80   defined in (C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Lib\libm0.sm8)lgneg.o section .text
                                         used in (C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Lib\libm0.sm8)ldiv.o
-c_lgrsh                      0000a3a0   defined in (C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Lib\libm0.sm8)lgrsh.o section .text
+c_lgrsh                      0000aaaf   defined in (C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Lib\libm0.sm8)lgrsh.o section .text
                                         used in Debug\stc1000p_lib.o
-c_lmul                       0000a3ae   defined in (C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Lib\libm0.sm8)lmul.o section .text
+c_lmul                       0000aabd   defined in (C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Lib\libm0.sm8)lmul.o section .text
                                         used in Debug\pid.o
-c_lmulc                      0000a3b6   defined in (C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Lib\libm0.sm8)lmul.o section .text
+c_lmulc                      0000aac5   defined in (C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Lib\libm0.sm8)lmul.o section .text
                                         *** not used ***
-c_lneg                       0000a584   defined in (C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Lib\libm0.sm8)lneg.o section .text
+c_lneg                       0000ac93   defined in (C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Lib\libm0.sm8)lneg.o section .text
                                         used in (C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Lib\libm0.sm8)ldiv.o
-c_lreg                       000000c1   defined in (C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Lib\libm0.sm8)lreg.o section .ubsct
+c_lreg                       000000e1   defined in (C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Lib\libm0.sm8)lreg.o section .ubsct
                                         used in Debug\adc.o Debug\delay.o
                                                 Debug\pid.o
                                                 (C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Lib\libm0.sm8)cmulx.o
@@ -1292,30 +1482,30 @@ c_lreg                       000000c1   defined in (C:\Program Files (x86)\COSMI
                                                 (C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Lib\libm0.sm8)rtol.o
                                                 (C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Lib\libm0.sm8)utolx.o
                                                 (C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Lib\libm0.sm8)umul.o
-c_lrsh                       0000a439   defined in (C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Lib\libm0.sm8)lrsh.o section .text
+c_lrsh                       0000ab48   defined in (C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Lib\libm0.sm8)lrsh.o section .text
                                         used in Debug\adc.o
-c_lsub                       0000a448   defined in (C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Lib\libm0.sm8)lsub.o section .text
+c_lsub                       0000ab57   defined in (C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Lib\libm0.sm8)lsub.o section .text
                                         used in Debug\delay.o
-c_ltor                       0000a460   defined in (C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Lib\libm0.sm8)ltor.o section .text
+c_ltor                       0000ab6f   defined in (C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Lib\libm0.sm8)ltor.o section .text
                                         used in Debug\adc.o Debug\delay.o
-c_ludv                       0000a472   defined in (C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Lib\libm0.sm8)ludiv.o section .text
+c_ludv                       0000ab81   defined in (C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Lib\libm0.sm8)ludiv.o section .text
                                         used in Debug\pid.o
-c_rtol                       0000a599   defined in (C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Lib\libm0.sm8)rtol.o section .text
+c_rtol                       0000aca8   defined in (C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Lib\libm0.sm8)rtol.o section .text
                                         used in Debug\delay.o Debug\pid.o
-c_uitolx                     0000a5ab   defined in (C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Lib\libm0.sm8)utolx.o section .text
+c_uitolx                     0000acba   defined in (C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Lib\libm0.sm8)utolx.o section .text
                                         used in Debug\delay.o Debug\pid.o
-c_umul                       0000a5b2   defined in (C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Lib\libm0.sm8)umul.o section .text
+c_umul                       0000acc1   defined in (C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Lib\libm0.sm8)umul.o section .text
                                         used in Debug\pid.o
-c_x                          000000c5   defined in (C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Lib\libm0.sm8)xreg.o section .ubsct
+c_x                          000000e5   defined in (C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Lib\libm0.sm8)xreg.o section .ubsct
                                         used in C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Lib\crtsi0.sm8
                                                 Debug\stc1000p.o
                                                 Debug\stc1000p_lib.o
                                                 (C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Lib\libm0.sm8)lmul.o
                                                 (C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Lib\libm0.sm8)ldiv.o
                                                 (C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Lib\libm0.sm8)umul.o
-c_y                          000000c8   defined in (C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Lib\libm0.sm8)yreg.o section .ubsct
+c_y                          000000e8   defined in (C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Lib\libm0.sm8)yreg.o section .ubsct
                                         used in C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Lib\crtsi0.sm8
                                                 Debug\stc1000p.o
                                                 (C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Lib\libm0.sm8)umul.o
-f_NonHandledInterrup5        0000a5ef   defined in Debug\stm8_interrupt_vector.o section .text
-f_NonHandledInterrupt        0000a5ee   defined in Debug\stm8_interrupt_vector.o section .text
+f_NonHandledInterrup5        0000acfe   defined in Debug\stm8_interrupt_vector.o section .text
+f_NonHandledInterrupt        0000acfd   defined in Debug\stm8_interrupt_vector.o section .text

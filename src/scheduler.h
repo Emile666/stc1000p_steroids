@@ -36,9 +36,9 @@
 #define TASK_ENABLED  (0x02)
 
 #define NO_ERR        (0x00)
+#define ERR_MAX_TASKS (0x03)
 #define ERR_NAME      (0x04)
 #define ERR_EMPTY     (0x05)
-#define ERR_MAX_TASKS    (5)
 
 typedef struct _task_struct
 {

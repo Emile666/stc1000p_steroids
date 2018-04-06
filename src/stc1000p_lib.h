@@ -144,6 +144,7 @@ enum e_item_type
 	_(Ti, 	LED_t, 	LED_I, 	LED_OFF, t_parameter,  280)		\
 	_(Td, 	LED_t, 	LED_d, 	LED_OFF, t_parameter,   20)		\
 	_(Ts, 	LED_t, 	LED_S, 	LED_OFF, t_parameter,    0)		\
+	_(dI, 	LED_d, 	LED_I, 	LED_OFF, t_parameter,    0)		\
 	_(rn, 	LED_r, 	LED_n, 	LED_OFF, t_runmode,    NO_OF_PROFILES)
 
 #define ENUM_VALUES(name,led10ch,led1ch,led01ch,type,default_value) name,
@@ -161,13 +162,13 @@ enum menu_enum
 //---------------------------------------------------------------------------
 #define EEADR_PROFILE_SETPOINT(profile, step)	(((profile)*PROFILE_SIZE) + ((step)<<1))
 #define EEADR_PROFILE_DURATION(profile, step)	EEADR_PROFILE_SETPOINT(profile, step) + 1
-#define EEADR_MENU				EEADR_PROFILE_SETPOINT(NO_OF_PROFILES, 0)
+#define EEADR_MENU				                EEADR_PROFILE_SETPOINT(NO_OF_PROFILES, 0)
 // Find the parameter word address in EEPROM
-#define EEADR_MENU_ITEM(name)		        (EEADR_MENU + (name))
+#define EEADR_MENU_ITEM(name)		            (EEADR_MENU + (name))
 // Help to convert menu item number and config item number to an EEPROM config address
 #define MI_CI_TO_EEADR(mi, ci)	                ((mi)*PROFILE_SIZE + (ci))
 // Set POWER_ON after LAST parameter (in this case rn)!
-#define EEADR_POWER_ON				(EEADR_MENU_ITEM(rn) + 1)
+#define EEADR_POWER_ON				            (EEADR_MENU_ITEM(rn) + 1)
 
 // These are the bit-definitions in _buttons
 #define BTN_PWR	 (0x88)
