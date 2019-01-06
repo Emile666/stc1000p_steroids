@@ -23,7 +23,7 @@
  */
 #include "stc1000p.h"
 #include "stc1000p_lib.h"
-#include <stdint.h>
+#include "stdint.h"
 
 #define FO433_SEC       (60) /* 48 */
 #define FO433_MAX_BYTES  (6)
@@ -40,6 +40,6 @@
 
 void    fo433_isr(void);
 uint8_t fo433_crc8(uint8_t data, uint8_t crc);
-void    fo433_fsm(void);
+void    fo433_fsm(int16_t temp);
 
 #endif

@@ -811,30 +811,30 @@ void enable_heating(void)
 /*-----------------------------------------------------------------------------
   Purpose  : This routine controls the temperature setpoints. It should be 
              called once every second by ctrl_task().
-  Variables: -
+  Variables: temp: the actual temperature value
   Returns  : -
   ---------------------------------------------------------------------------*/
-void temperature_control(void)
+void temperature_control(int16_t temp)
 {
     init_temp_delays(); // Initialise Heating and Cooling delay
 
     // This is the thermostat logic
     if (!pwr_on ||
-       (COOL_STATUS && (temp_ntc1 <= setpoint || (probe2 && (temp_ntc2 < (setpoint - hysteresis2))))) || 
-       (HEAT_STATUS && (temp_ntc1 >= setpoint || (probe2 && (temp_ntc2 > (setpoint + hysteresis2))))))
+       (COOL_STATUS && (temp <= setpoint || (probe2 && (temp_ntc2 < (setpoint - hysteresis2))))) || 
+       (HEAT_STATUS && (temp >= setpoint || (probe2 && (temp_ntc2 > (setpoint + hysteresis2))))))
     {
         cooling_delay = min_to_sec(cd);
         heating_delay = min_to_sec(hd);
-	      RELAYS_OFF; // Disable Cooling and Heating relays
+	    RELAYS_OFF; // Disable Cooling and Heating relays
         led_e &= ~(LED_HEAT | LED_COOL); // disable both LEDs
     } // if
     else if (!HEAT_STATUS && !COOL_STATUS) 
     {
 	      hysteresis2 >>= 2; // Divide hysteresis2 by 2
-	      if ((temp_ntc1 > setpoint + hysteresis) && (!probe2 || (temp_ntc2 >= setpoint - hysteresis2))) 
+	      if ((temp > setpoint + hysteresis) && (!probe2 || (temp_ntc2 >= setpoint - hysteresis2))) 
              enable_cooling(); // switch cooling relay
         else led_e &= ~LED_COOL;
-	      if ((temp_ntc1 < setpoint - hysteresis) && (probe2 || (temp_ntc2 <= setpoint + hysteresis2))) 
+	      if ((temp < setpoint - hysteresis) && (probe2 || (temp_ntc2 <= setpoint + hysteresis2))) 
 	           enable_heating(); // switch heating relay
 	      else led_e &= ~LED_HEAT;
     } // else if
@@ -847,7 +847,7 @@ void temperature_control(void)
   Variables: -
   Returns  : -
   ---------------------------------------------------------------------------*/
-void pid_control(void)
+void pid_control(int16_t temp)
 {
     static uint8_t pid_tmr = 0;
     
@@ -857,22 +857,22 @@ void pid_control(void)
         ti != eeprom_read_config(EEADR_MENU_ITEM(Ti)) ||
         td != eeprom_read_config(EEADR_MENU_ITEM(Td)))
     {   // One or more PID parameters have changed
-       kc = eeprom_read_config(EEADR_MENU_ITEM(Hc));
-       ti = eeprom_read_config(EEADR_MENU_ITEM(Ti));
-       td = eeprom_read_config(EEADR_MENU_ITEM(Td));
-       init_pid(kc,ti,td,ts,temp_ntc1); // Init PID controller
+        kc = eeprom_read_config(EEADR_MENU_ITEM(Hc));
+        ti = eeprom_read_config(EEADR_MENU_ITEM(Ti));
+        td = eeprom_read_config(EEADR_MENU_ITEM(Td));
+        init_pid(kc,ti,td,ts,temp); // Init PID controller
     } // if
     
     if (++pid_tmr >= ts) 
     {   // Call PID controller every TS seconds
-        pid_ctrl(temp_ntc1,&pid_out,setpoint);
+        pid_ctrl(temp,&pid_out,setpoint);
         pid_tmr = 0;
     } // if
     // --------- Logic for HEATING -----------------------------------
     if (!pwr_on || (HEAT_STATUS && (pid_out <= hysteresis)))
     {   // heating and pid-output drops below hysteresis limit in E-1 %
         heating_delay = min_to_sec(hd);
-	      HEAT_OFF;           // Disable Heating
+	    HEAT_OFF;           // Disable Heating
         led_e &= ~LED_HEAT; // Disable LED indicator
     } // if    
     else if (!HEAT_STATUS && (pid_out >= hysteresis2))
@@ -883,11 +883,11 @@ void pid_control(void)
     if (!pwr_on || (COOL_STATUS && (pid_out >= -hysteresis)))
     {   // cooling and pid-output exceeds upper hysteresis limit in E-1 %
         cooling_delay = min_to_sec(cd);
-	      COOL_OFF; // Disable cooling
+	    COOL_OFF; // Disable cooling
         led_e &= ~LED_COOL; // Disable LED indicator
     } // if    
     else if (!COOL_STATUS && (pid_out <= -hysteresis2))
     {   // pwr_on && !cooling && pid-output drops below hysteresis limit in E-1 %
-	      enable_cooling(); // switch cooling relay
+	    enable_cooling(); // switch cooling relay
     } // else if
 } // pid_control()

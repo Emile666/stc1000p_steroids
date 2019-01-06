@@ -14,7 +14,7 @@
 #ifndef _NRF24_H
 #define _NRF24_H
 #include "nrf24l01.h"
-#include <stdint.h>
+#include "stdint.h"
 
 #define nrf24_ADDR_LEN 5
 #define nrf24_CONFIG ((1<<EN_CRC)|(0<<CRCO))

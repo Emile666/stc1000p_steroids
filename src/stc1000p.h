@@ -79,9 +79,6 @@
 #define STC1000P_VERSION	(200)
 #define STC1000P_EEPROM_VERSION	 (20)
 
-// I2C base address of DS2482
-#define DS2482_BASE (0x30)
-
 // PORTG IO: 7 segment E + F
 #define S7_E     (0x02)
 #define S7_F     (0x01)
@@ -122,8 +119,8 @@
 #define CC_ALL     (CC_e | CC_01 | CC_1 | CC_10)
 
 // PORTB IO: ADC-channels AIN3 (PB3) and AIN2 (PB2)
-#define LED3        (0x80)
-#define LED2        (0x40)
+#define LED3        (0x80) /* Green LED, shows FO433 activity */
+#define LED2        (0x40) /* Orange LED, Alive indicator */
 #define LED1        (0x20)
 #define AD_CHANNELS (0x0C)
 #define PB_NC       (0x13)
@@ -140,17 +137,18 @@
 #define HEAT     (0x02)
 #define PA_NC    (0x81)
 
-#define ALARM_ON    (PA_ODR |=  ALARM)
-#define ALARM_OFF   (PA_ODR &= ~ALARM)
-#define COOL_STATUS ((PA_IDR & COOL) == COOL)
-#define SSR_ON      (PA_ODR |=  SSR)
-#define SSR_OFF     (PA_ODR &= ~SSR)
-#define COOL_ON     (PA_ODR |=  COOL)
-#define COOL_OFF    (PA_ODR &= ~COOL)
-#define HEAT_ON     (PA_ODR |=  HEAT)
-#define HEAT_OFF    (PA_ODR &= ~HEAT)
-#define HEAT_STATUS ((PA_IDR & HEAT) == HEAT)
-#define RELAYS_OFF  (PA_ODR &= ~(HEAT | COOL))
+#define ALARM_ON     (PA_ODR |=  ALARM)
+#define ALARM_OFF    (PA_ODR &= ~ALARM)
+#define ALARM_STATUS ((PA_IDR & ALARM) == ALARM)
+#define SSR_ON       (PA_ODR |=  SSR)
+#define SSR_OFF      (PA_ODR &= ~SSR)
+#define COOL_ON      (PA_ODR |=  COOL)
+#define COOL_OFF     (PA_ODR &= ~COOL)
+#define COOL_STATUS  ((PA_IDR & COOL) == COOL)
+#define HEAT_ON      (PA_ODR |=  HEAT)
+#define HEAT_OFF     (PA_ODR &= ~HEAT)
+#define HEAT_STATUS  ((PA_IDR & HEAT) == HEAT)
+#define RELAYS_OFF   (PA_ODR &= ~(HEAT | COOL))
      
 // PD7 PG1 PG0 PD4 PD3 PD2 PE0 PD0
 //  D   E   F   G   dp  A   C   B 

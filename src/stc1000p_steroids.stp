@@ -292,6 +292,11 @@ String.6.0=2017,1,4,16,27,54
 [Root.Source Files.adc.c]
 ElemType=File
 PathName=adc.c
+Next=Root.Source Files.comms.c
+
+[Root.Source Files.comms.c]
+ElemType=File
+PathName=comms.c
 Next=Root.Source Files.delay.c
 
 [Root.Source Files.delay.c]
@@ -357,6 +362,11 @@ Next=Root.Source Files.stm8_interrupt_vector.c
 [Root.Source Files.stm8_interrupt_vector.c]
 ElemType=File
 PathName=stm8_interrupt_vector.c
+Next=Root.Source Files.uart.c
+
+[Root.Source Files.uart.c]
+ElemType=File
+PathName=uart.c
 
 [Root.Include Files]
 ElemType=Folder
@@ -434,6 +444,11 @@ String.6.0=2017,1,4,16,27,54
 [Root.Include Files.adc.h]
 ElemType=File
 PathName=adc.h
+Next=Root.Include Files.comms.h
+
+[Root.Include Files.comms.h]
+ElemType=File
+PathName=comms.h
 Next=Root.Include Files.delay.h
 
 [Root.Include Files.delay.h]
@@ -504,3 +519,8 @@ Next=Root.Include Files.stdint.h
 [Root.Include Files.stdint.h]
 ElemType=File
 PathName=stdint.h
+Next=Root.Include Files.uart.h
+
+[Root.Include Files.uart.h]
+ElemType=File
+PathName=uart.h

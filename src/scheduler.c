@@ -23,9 +23,12 @@
 */ 
 #include "scheduler.h"
 #include <string.h>
+#include "stdint.h"
+#include "delay.h"
+#include "uart.h"
 
-task_struct task_list[MAX_TASKS]; // struct with all tasks
-uint8_t     max_tasks = 0;
+@near task_struct task_list[MAX_TASKS]; // struct with all tasks
+uint8_t max_tasks = 0;
 
 /*-----------------------------------------------------------------------------
   Purpose  : Initialization function for scheduler. Should be called before 
@@ -78,15 +81,26 @@ void scheduler_isr(void)
 void dispatch_tasks(void)
 {
 	uint8_t  index = 0;
+	uint32_t time1; // Measured #clock-ticks of 50 usec. (TMR1 frequency)
+	uint32_t time2;
 
 	//go through the active tasks
 	while ((index < MAX_TASKS) && task_list[index].pFunction)
 	{
 		if((task_list[index].Status & (TASK_READY | TASK_ENABLED)) == (TASK_READY | TASK_ENABLED))
 		{
+            time1 = millis(); // Read msec. timer
 			task_list[index].pFunction(); // run the task
 			task_list[index].Status  &= ~TASK_READY; // reset the task when finished
 			task_list[index].Counter  = task_list[index].Period; // reset counter
+			time2 = millis(); // read msec. timer
+			if (time2 < time1) time2 += UINT32_MAX - time1; // overflows every 49.7 days, unlikely
+			else               time2 -= time1; 
+			task_list[index].Duration  = (uint16_t)time2; // time difference in milliseconds
+			if (time2 > task_list[index].Duration_Max)
+			{
+				task_list[index].Duration_Max = time2;
+			} // if
 		} // if
 		index++;
 	} // while
@@ -110,7 +124,7 @@ uint8_t add_task(void (*task_ptr)(), char *Name, uint16_t delay, uint16_t period
 	if (max_tasks >= MAX_TASKS) return ERR_MAX_TASKS;
 	//go through the active tasks
 	while ((index < MAX_TASKS) && task_list[index].Period) index++;
-  if (index >= MAX_TASKS)     return ERR_MAX_TASKS;
+    if (index >= MAX_TASKS)     return ERR_MAX_TASKS;
 	//if(task_list[index].Period != 0)
 	//{
 	//	while(task_list[++index].Period != 0) ;
@@ -124,6 +138,8 @@ uint8_t add_task(void (*task_ptr)(), char *Name, uint16_t delay, uint16_t period
 		task_list[index].Delay        = temp1;          // Initial delay before start
 		task_list[index].Status      |= TASK_ENABLED;   // Enable task by default
 		task_list[index].Status      &= ~TASK_READY;    // Task not ready to run
+		task_list[index].Duration     = 0;              // Actual Task Duration
+		task_list[index].Duration_Max = 0;              // Max. Task Duration
 		strncpy(task_list[index].Name, Name, NAME_LEN); // Name of Task
 		max_tasks++; // increase number of tasks
 	} // if
@@ -218,3 +234,29 @@ uint8_t set_task_time_period(uint16_t Period, char *Name)
 	else return NO_ERR;	
 } // set_task_time_period()
 
+/*-----------------------------------------------------------------------------
+  Purpose  : list all tasks and send result to the UART.
+  Variables: -
+ Returns   : -
+  ---------------------------------------------------------------------------*/
+void list_all_tasks(void)
+{
+	uint8_t index = 0;
+	char    s[50];
+
+	xputs("Task-Name,T(ms),Stat,T(ms),M(ms)\r\n");
+	//go through the active tasks
+	if(task_list[index].Period != 0)
+	{
+		while ((index < MAX_TASKS) && (task_list[index].Period != 0))
+		{
+            xputs(task_list[index].Name);
+            
+			sprintf(s,",%d,0x%x,%d,%d\r\n", 
+                      task_list[index].Period  , (uint16_t)task_list[index].Status, 
+					  task_list[index].Duration, task_list[index].Duration_Max);
+			xputs(s);
+			index++;
+		} // while
+	} // if
+} // list_all_tasks()

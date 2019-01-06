@@ -4,11 +4,11 @@
 This is a version of the STC-1000p (STC-1000p-STM8) with new hardware and a new microcontroller, the **STM8S105C6T6**. It is a major upgrade to the stock **STM8S003F3** µC. In the version, you get all the exciting features from
 the stc-1000p-stm8 version (including the PID-control with SSR output), PLUS:
 - Three additional LEDs placed directly above the 7-segment display. These can be used for all kinds of indications.
-- Interface for an **nRF24L01+** 2.4 GHz transceiver. Now you can control and communicate wireless with the STC1000p. The nRF24L01+ is known to have a large range (up to 100 metres is reported).
 - One-wire interface, so you can hook up a **DS18B20** One-Wire temperature-sensor for reliable temperature measurements.
 - **I<sup>2</sup>C**-interface for additional connection to other hardware (e.g. a MCP23017 16-bit IO expander to control solenoid ball valves).
 - An **UART** interface so that commands can be sent using serial communication.
 - A **433 MHz** transmitter interface is added so that temperatures and relay on/off are sent (using the Fine Offset protocol from Matts original fimware).
+- Interface for an **nRF24L01+** 2.4 GHz transceiver. Now you can control and communicate wireless with the STC1000p. The nRF24L01+ is known to have a large range (up to 100 metres is reported).
 
 The **STM8S105C6T6** µC has 32 Kbytes of Flash memory, 1024 bytes of EEPROM and 2 Kbytes of RAM. So there's plenty of room for all new functionality. It also has more than sufficient IO pins, since it is a LQFP48 package.
 
@@ -42,6 +42,18 @@ Much of this project is still work in progress, with hardware already pretty sta
 
 I work on this from time to time, so it is not a completely finished project yet.
 
+UART Communication protocol
+--------------
+If you connect an UART (+3.3V!) to USB device, it is possible to communicate with the stc1000 using commands. Currently the following commands are available:
+- **S0**: print the current revision number of the software
+- **S1**: Lists the address of all connected I2C devices. It should show at least 0x40, which is the I2C address for the DS2482 I2C to One-Wire device.
+- **S2**: Lists all tasks of the scheduler. It should show 4 tasks.
+- **S3**: Shows the temperature and status of a connected DS18B20 One-Wire device. It should read ds18b20_read():0 (1 = error) and the actual temperature of the sensor
+- **O1** and **O0**: the O1 commands selects the One-wire temperature sensor over the default NTC sensor. The O0 command selects the default NTC sensor again. The selected sensorvalue is displayed on-screen and is used for both temperature and pid-control.
+
+![serial_to_usb](img/serial_to_usb.png)<br>
+*Serial (UART) to USB interface*
+
 Frontpanel PCB
 ----------
 Here's version 03 of the new frontpanel PCB.
@@ -69,9 +81,9 @@ Although it is possible to connect the frontpanel PCB directly to an existing ba
 *PCB as received from the PCB manufacturer (allpcb.com).*
 
 There's now a 10 pole terminal-block with the following connections:
-- **T2**: connect a temperature sensor to this pin and the +5V pin (same as in original STC1000)
+- **T2**: connect a 2nd temperature sensor to this pin and the +3.3V pin (same as in Matts' firmware)
 - **+5V**: +5V power-supply voltage (same as in original STC1000). **BUG**: this should be 3.3V.
-- **T1**: connect a second temperature sensor to this pin and the +5V pin (same as for Matts firmware)
+- **T1**: connect a temperature sensor (10 k NTC) to this pin and the +5V pin (same as in original STC1000)
 - **GND**: ground (0 V) connection. 
 - **SSR**: SSR output. Connect this to the input line of a solid-state relay. This is a PID controlled output.
 - **SCL**: Serial clock-line of the I<sup>2</sup>C interface.
@@ -87,4 +99,5 @@ Updates
 |----|-------|-----------|
 |2016-12-10|v1.00|First release |
 |2018-03-23|v1.10|Frontpanel PCB update + new backplane PCB added|
+|2019-01-07|v1.10|First working version with UART, One-Wire and Fine-Offset Protocol (433 MHz) added|
 

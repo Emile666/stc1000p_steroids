@@ -40,9 +40,10 @@
 #define I2C_SR1_ADDR (0x02)
 #define I2C_SR1_SB   (0x01)
 
-#define I2C_SR2_AF   (0x04)
+#define I2C_SR2_AF   (0x04) /* ACK Failure */
 
-#define I2C_SR3_BUSY (0x02)
+#define I2C_SR3_BUSY (0x02) /* Bus Busy */
+#define I2C_SR3_MSL  (0x01) /* Master/Slave */
 
 /* defines the data direction (reading from I2C device) in i2c_start(), i2c_rep_start() */
 #define I2C_ACK     (0)
@@ -62,25 +63,35 @@
 #define LM92_ERR       (0x4000)
 
 //-------------------------------------------------------------------------
-// MCP23008 8-BIT  IO Expander
+// MCP23017 16-BIT IO Expander: Register names when BANK == 1
 //-------------------------------------------------------------------------
-// Bank addressing, seq. operation disabled, slew rate enabled
+// No bank addressing, seq. operation disabled, slew rate enabled
 // HW addressing enabled
-#define MCP23008_INIT (0x2A)
-#define MCP23008_ADDR (0x40)
+#define MCP23017_ADDR (0x40)
+#define MCP23017_INIT (0x00)
 
-// Defines for the MCP23008
-#define IODIR   (0x00)
-#define IPOL    (0x01)
-#define GPINTEN (0x02)
-#define DEFVAL  (0x03)
-#define INTCON  (0x04)
-#define IOCON   (0x05)
-#define GPPU    (0x06)
-#define INTF    (0x07)
-#define INTCAP  (0x08)
-#define GPIO    (0x09)
-#define OLAT    (0x0A)
+// Defines for the MCP23017 with IOCON.BANK = 0
+#define IODIRA   (0x00)
+#define IODIRB   (0x01)
+#define IPOLA    (0x02)
+#define IPOLB    (0x03)
+#define GPINTENA (0x04)
+#define GPINTENB (0x05)
+#define DEFVALA  (0x06)
+#define DEFVALB  (0x07)
+#define INTCONA  (0x08)
+#define INTCONB  (0x09)
+#define IOCON    (0x0A)
+#define GPPUA    (0x0C)
+#define GPPUB    (0x0D)
+#define INTFA    (0x0E)
+#define INTFB    (0x0F)
+#define INTCAPA  (0x10)
+#define INTCAPB  (0x11)
+#define GPIOA    (0x12)
+#define GPIOB    (0x13)
+#define OLATA    (0x14)
+#define OLATB    (0x15)
 
 // DS2482 Configuration Register
 // Standard speed (1WS==0), Strong Pullup disabled (SPU==0), Active Pullup enabled (APU==1)
@@ -109,25 +120,24 @@
 #define STATUS_TSB  (0x40)
 #define STATUS_DIR  (0x80)
 
-void    i2c_init(bool bb);           // Initializes the I2C Interface. Needs to be called only once
+void    i2c_init(void);              // Initializes the I2C Interface. Needs to be called only once
 uint8_t i2c_start(uint8_t addr);     // Issues a start condition and sends address and transfer direction
 uint8_t i2c_rep_start(uint8_t addr); // Issues a repeated start condition and sends address and transfer direction
 void    i2c_stop(void);              // Terminates the data transfer and releases the I2C bus
 void    i2c_write(uint8_t data);     // Send one byte to I2C device
-uint8_t i2c_read(uint8_t ack);       // Read one byte from I2C device
-void    i2c_readN(uint8_t num_bytes, uint8_t *buf); // read byte(s) from the I2C device
+uint8_t i2c_read1(uint8_t ack);      // Lujji version of i2c_read()
+void    i2c_read_arr(uint8_t *buf, int len); // Lujji version of i2c_readN()
 
 int16_t lm92_read(uint8_t addr, uint8_t *err);
 
 uint8_t mcp23008_init(void);
-uint8_t mcp230xx_read(uint8_t reg);
-uint8_t mcp230xx_write(uint8_t reg, uint8_t data);
+uint8_t mcp23017_init(void);
+uint8_t mcp23017_read(uint8_t reg);
+uint8_t mcp23017_write(uint8_t reg, uint8_t data);
 
 int8_t  ds2482_reset(uint8_t addr);
-int8_t  ds2482_reset_bb(uint8_t addr);
 int8_t  ds2482_write_config(uint8_t addr);
 int8_t  ds2482_detect(uint8_t addr);
-int8_t  ds2482_detect_bb(uint8_t addr);
 uint8_t ds2482_search_triplet(uint8_t search_direction, uint8_t addr);
 
 #endif

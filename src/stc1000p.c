@@ -28,8 +28,10 @@
 #include "adc.h"
 #include "eep.h"
 #include "i2c.h"
+#include "one_wire.h"
 #include "nrf24.h"
 #include "fo433.h"
+#include "comms.h"
 
 // Global variables
 uint8_t   ad_err1 = false; // used for adc range checking
@@ -43,13 +45,14 @@ int16_t   temp_ntc1;         // The temperature in E-1 °C from NTC probe 1
 int16_t   temp_ntc2;         // The temperature in E-1 °C from NTC probe 2
 uint8_t   mpx_nr = 0;        // Used in multiplexer() function
 int16_t   pwr_on_tmr = 1000; // Needed for 7-segment display test
-int16_t   temp1_ow_84;       // TMLT Temperature from DS18B20 in °C * 128
+int16_t   temp1_ow_10;       // Temperature from DS18B20 in °C * 10
 uint8_t   temp1_ow_err = 0;  // 1 = Read error from DS18B20
+uint8_t   use_one_wire = 0;  // 1 = Use one-wire sensor instead of NTC probe 1
 bool      msec051 = false;   // millisecond indicator
 
 // Radio pipe addresses for the communication nodes
-uint8_t tx_address[5] = {0xFF,0xFF,0xFF,0xFF,0xFF};
-uint8_t rx_address[5] = {0xFF,0xFF,0xFF,0xFF,0xFF};
+//@near uint8_t tx_address[5] = {0xFF,0xFF,0xFF,0xFF,0xFF};
+//@near uint8_t rx_address[5] = {0xFF,0xFF,0xFF,0xFF,0xFF};
 
 // External variables, defined in other files
 extern uint8_t  led_e;                 // value of extra LEDs
@@ -66,6 +69,7 @@ extern uint8_t  ts;               // Parameter value for sample time [sec.]
 extern int16_t  pid_out;          // Output from PID controller in E-1 %
 extern int16_t  @eeprom eedata[]; // Link to .eeprom section
 extern uint32_t t2_millis;        // needed for delay_msec()
+extern uint8_t  rs232_inbuf[];
 
 /*-----------------------------------------------------------------------------
   Purpose  : This routine multiplexes the 4 segments of the 7-segment displays.
@@ -329,16 +333,16 @@ void std_task(void)
 /*-----------------------------------------------------------------------------
   Purpose  : This task is called every second and contains the main control
              task for the device. It also calls temperature_control() / 
-             pis_ctrl() and is used to drive the 433 MHZ transmitter FSM.
+             pid_ctrl() and is used to drive the 433 MHZ transmitter FSM.
   Variables: -
   Returns  : -
   ---------------------------------------------------------------------------*/
 void ctrl_task(void)
 {
-   int16_t sa, diff;
+   int16_t sa, diff, temp;
    
-	  if (PB_IDR & LED2)
-		     PB_ODR &= ~LED2;
+	  if (PB_IDR & LED2)    // Orange LED, Alive indicator
+		   PB_ODR &= ~LED2;
 	  else PB_ODR |=  LED2;
 		
     if (eeprom_read_config(EEADR_MENU_ITEM(CF))) // true = Fahrenheit
@@ -370,13 +374,17 @@ void ctrl_task(void)
             led_e |=  LED_SET; // Indicate profile mode
        else led_e &= ~LED_SET;
  
-       ts = eeprom_read_config(EEADR_MENU_ITEM(Ts)); // Read Ts [seconds]
-       sa = eeprom_read_config(EEADR_MENU_ITEM(SA)); // Show Alarm parameter
+       ts            = eeprom_read_config(EEADR_MENU_ITEM(Ts));  // Read Ts [seconds]
+       sa            = eeprom_read_config(EEADR_MENU_ITEM(SA));  // Show Alarm parameter
+       use_one_wire  = eeprom_read_config(EEADR_MENU_ITEM(One)); // 1 = use One-Wire sensor
+       if (use_one_wire) temp = temp1_ow_10; // use one-wire sensor
+       else              temp = temp_ntc1;   // use NTC1 temp. sensor
+       
        if (sa)
        {
            if (minutes) // is timing-control in minutes?
-                diff = temp_ntc1 - setpoint;
-           else diff = temp_ntc1 - eeprom_read_config(EEADR_MENU_ITEM(SP));
+                diff = temp - setpoint;
+           else diff = temp - eeprom_read_config(EEADR_MENU_ITEM(SP));
 
            if (diff < 0) diff = -diff;
 	       if (sa < 0)
@@ -391,15 +399,15 @@ void ctrl_task(void)
               else ALARM_OFF; // reset the piezo buzzer
 	       } // if
        } // if
-       if (ts == 0)                // PID Ts parameter is 0?
+       if (ts == 0)                   // PID Ts parameter is 0?
        {
-           temperature_control();  // Run thermostat
-           pid_out = 0;            // Disable PID-output
+           temperature_control(temp); // Run thermostat
+           pid_out = 0;               // Disable PID-output
        } // if
-       else pid_control();         // Run PID controller
-       if (menu_is_idle)           // show temperature if menu is idle
+       else pid_control(temp);        // Run PID controller
+       if (menu_is_idle)              // show temperature if menu is idle
        {
-           if ((PD_IDR & ALARM) && show_sa_alarm)
+           if ((ALARM_STATUS) && show_sa_alarm)
            {
                led_10 = LED_S;
                led_1  = LED_A;
@@ -408,7 +416,7 @@ void ctrl_task(void)
                led_e &= ~LED_POINT; // LED in middle, does not seem to work
                switch (sensor2_selected)
                {
-                   case 0: value_to_led(temp_ntc1,LEDS_TEMP); 
+                   case 0: value_to_led(temp,LEDS_TEMP); 
                            break;
                    case 1: value_to_led(temp_ntc2,LEDS_TEMP); 
                            led_e |= LED_POINT;
@@ -420,7 +428,7 @@ void ctrl_task(void)
            show_sa_alarm = !show_sa_alarm;
        } // if
    } // else
-   fo433_fsm();     // call the FO433 state machine
+   fo433_fsm(temp); // call the FO433 state machine
    one_wire_task(); // read from one-wire temperature sensor if present
 } // ctrl_task()
 
@@ -503,11 +511,14 @@ void one_wire_task(void)
 	switch (ow_std)
 	{   
 		case 0: // Start Conversion
-				ds18b20_start_conversion(DS2482_BASE);
+				ds18b20_start_conversion(DS2482_ADDR);
 				ow_std = 1;
 				break;
 		case 1: // Read Thlt device
-			    temp1_ow_84 = ds18b20_read(DS2482_BASE, &temp1_ow_err,1);
+			    temp1_ow_10   = ds18b20_read(DS2482_ADDR, &temp1_ow_err,1);
+                temp1_ow_10  *= 5; // * 5/8 = 10/16
+                temp1_ow_10  += 4; // rounding
+                temp1_ow_10 >>= 3; // div 8
 				ow_std = 0;
 				break;
 	} // switch
@@ -522,15 +533,17 @@ void one_wire_task(void)
   ---------------------------------------------------------------------------*/
 int main(void)
 {
+	char    s[30];      // Needed for xputs() and sprintf()
 	int ee = eedata[0]; // This is to prevent the linker from removing .eeprom section
-	uint8_t ok, buf[5], bb = false;
+	uint8_t ok, bb = false;
 	
     disable_interrupts();
     initialise_system_clock(); // Set system-clock to 16 MHz
     setup_gpio_ports();        // Init. needed output-ports for LED and keys
     setup_timer2();            // Set Timer 2 to 1 kHz
     pwr_on = eeprom_read_config(EEADR_POWER_ON); // check pwr_on flag
-    i2c_init(bb);           // Init. I2C bus
+    i2c_init();                // Init. I2C bus
+    uart_init();               // Init. serial communication
     
     // Initialise all tasks for the scheduler
 	scheduler_init();                    // clear task_list struct
@@ -538,29 +551,32 @@ int main(void)
     add_task(std_task ,"STD", 50,  100); // every 100 msec.
     add_task(ctrl_task,"CTL",200, 1000); // every second
     add_task(prfl_task,"PRF",300,60000); // every minute / hour
-    add_task(spi_task ,"SPI",400, 5000); // every 5 seconds
-    disable_task("SPI");                 // Enable it after init is done
+    //add_task(spi_task ,"SPI",400, 5000); // every 5 seconds
+    //disable_task("SPI");                 // Enable it after init is done
     enable_interrupts();
+    print_version_number();
+    //nrf24_init();                 // Init. nRF24l01p module on SPI bus
+    //nrf24_config(110,6);          // Channel #110 , payload length: 6
+    //nrf24_tx_address(tx_address); // Set the device addresses
+    //nrf24_rx_address(rx_address);        
+    //enable_task("SPI");
 
-    nrf24_init();                 // Init. nRF24l01p module on SPI bus
-    nrf24_config(110,6);          // Channel #110 , payload length: 6
-    nrf24_tx_address(tx_address); // Set the device addresses
-    nrf24_rx_address(rx_address);        
-    enable_task("SPI");
-
-    if (bb)
-    {
-        ok = ds2482_detect_bb(DS2482_ADDR);
-    }
-    else
-    {
-        ok = ds2482_detect(DS2482_ADDR);   // true
-    };
-    ok = ok + 1;
+    ok = ds2482_detect(DS2482_ADDR);   // true
+    xputs("ds2482_detect:");
+    if (ok) xputs("1\r\n");
+    else    xputs("0\r\n");
     
     while (1)
     {   // background-processes
         dispatch_tasks();     // Run task-scheduler()
-        wait_for_interrupt(); // do nothing
+   		switch (rs232_command_handler()) // run command handler continuously
+		{
+			case ERR_CMD: xputs("Command Error\r\n"); break;
+			case ERR_NUM: sprintf(s,"Number Error (%s)\r\n",rs232_inbuf);
+						  xputs(s);  
+						  break;
+			default     : break;
+		} // switch
+        //wait_for_interrupt(); // do nothing
     } // while
 } // main()

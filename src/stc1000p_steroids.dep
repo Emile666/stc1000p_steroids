@@ -7,6 +7,9 @@ Number=1.3
 [Root.Source Files.adc.c.Config.0]
 ExternDep= adc.c  "C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Hstm8\mods0.h" adc.h  stdint.h "C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Hstm8\stdbool.h"  stc1000p.h  "C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Hstm8\iostm8s105.h"  delay.h
 
+[Root.Source Files.comms.c.Config.0]
+ExternDep= comms.c  "C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Hstm8\mods0.h"  "C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Hstm8\ctype.h"  "C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Hstm8\stdlib.h"  "C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Hstm8\stdio.h" uart.h  stdint.h "C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Hstm8\stdbool.h"  comms.h i2c.h  "C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Hstm8\iostm8s105.h"  scheduler.h "C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Hstm8\string.h"  eep.h stc1000p.h delay.h stc1000p_lib.h pid.h
+
 [Root.Source Files.delay.c.Config.0]
 ExternDep= delay.c  "C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Hstm8\mods0.h" delay.h  stdint.h stc1000p.h  "C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Hstm8\iostm8s105.h"
 
@@ -14,7 +17,7 @@ ExternDep= delay.c  "C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Hstm8\mo
 ExternDep= eep.c  "C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Hstm8\mods0.h" eep.h  stc1000p.h  "C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Hstm8\iostm8s105.h"  stdint.h delay.h
 
 [Root.Source Files.fo433.c.Config.0]
-ExternDep= fo433.c  "C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Hstm8\mods0.h" fo433.h  stc1000p.h  "C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Hstm8\iostm8s105.h"  stdint.h delay.h stc1000p_lib.h  "C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Hstm8\stdbool.h" eep.h  pid.h
+ExternDep= fo433.c  "C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Hstm8\mods0.h"  "C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Hstm8\iostm8s105.h"  fo433.h stc1000p.h stdint.h delay.h stc1000p_lib.h  "C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Hstm8\stdbool.h" eep.h  pid.h
 
 [Root.Source Files.i2c.c.Config.0]
 ExternDep= i2c.c  "C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Hstm8\mods0.h" i2c.h  "C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Hstm8\iostm8s105.h"  "C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Hstm8\stdbool.h" stdint.h  stc1000p.h delay.h
@@ -32,16 +35,19 @@ ExternDep= one_wire.c  "C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Hstm8
 ExternDep= pid.c  "C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Hstm8\mods0.h" pid.h  stdint.h
 
 [Root.Source Files.scheduler.c.Config.0]
-ExternDep= scheduler.c  "C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Hstm8\mods0.h"  scheduler.h stdint.h  "C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Hstm8\stdbool.h"  "C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Hstm8\string.h"
+ExternDep= scheduler.c  "C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Hstm8\mods0.h"  scheduler.h stdint.h  "C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Hstm8\stdbool.h"  "C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Hstm8\string.h" delay.h  uart.h
 
 [Root.Source Files.spi.c.Config.0]
 ExternDep= spi.c  "C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Hstm8\mods0.h" spi.h  "C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Hstm8\iostm8s105.h"  "C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Hstm8\stdbool.h" stdint.h  stc1000p.h delay.h
 
 [Root.Source Files.stc1000p.c.Config.0]
-ExternDep= stc1000p.c  "C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Hstm8\mods0.h" stc1000p.h  "C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Hstm8\iostm8s105.h"  stdint.h delay.h stc1000p_lib.h  "C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Hstm8\stdbool.h" eep.h  pid.h scheduler.h  "C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Hstm8\string.h" adc.h  i2c.h nrf24.h nrf24l01.h fo433.h
+ExternDep= stc1000p.c  "C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Hstm8\mods0.h" stc1000p.h  "C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Hstm8\iostm8s105.h"  stdint.h delay.h stc1000p_lib.h  "C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Hstm8\stdbool.h" eep.h  pid.h scheduler.h  "C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Hstm8\string.h" adc.h  i2c.h one_wire.h nrf24.h nrf24l01.h fo433.h comms.h
 
 [Root.Source Files.stc1000p_lib.c.Config.0]
 ExternDep= stc1000p_lib.c  "C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Hstm8\mods0.h"  stc1000p_lib.h stdint.h  "C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Hstm8\stdbool.h"  stc1000p.h  "C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Hstm8\iostm8s105.h"  delay.h eep.h pid.h
 
 [Root.Source Files.stm8_interrupt_vector.c.Config.0]
 ExternDep= stm8_interrupt_vector.c  "C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Hstm8\mods0.h"
+
+[Root.Source Files.uart.c.Config.0]
+ExternDep= uart.c  "C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Hstm8\mods0.h"  "C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Hstm8\iostm8s105.h"  "C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Hstm8\ctype.h"  "C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Hstm8\stdlib.h"  "C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Hstm8\stdio.h" uart.h  stdint.h "C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Hstm8\stdbool.h"  ring_buffer.h delay.h

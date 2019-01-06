@@ -37,9 +37,9 @@
 #include "delay.h"         /* for delay_msec() */
 
 // Search state
-uint8_t ROM_NO[8];
-int     LastDiscrepancy;
-int     LastFamilyDiscrepancy;
+@near uint8_t ROM_NO[8];
+uint8_t LastDiscrepancy;
+uint8_t LastFamilyDiscrepancy;
 bool    LastDeviceFlag;
 uint8_t crc8;
 int8_t  short_detected;
@@ -72,14 +72,14 @@ bool OW_reset(uint8_t addr)
 		i2c_rep_start(addr | I2C_READ);
    		// loop checking 1WB bit for completion of 1-Wire operation 
    		// abort if poll limit reached
-		status = i2c_read(I2C_ACK); // Read byte
+		status = i2c_read1(I2C_ACK); // Read byte
 	    do
 	    {
-	      if (status & STATUS_1WB) status = i2c_read(I2C_ACK);
+	      if (status & STATUS_1WB) status = i2c_read1(I2C_ACK);
 	    }
 	    while ((status & STATUS_1WB) && (poll_count++ < DS2482_OW_POLL_LIMIT));
-		status = i2c_read(I2C_NACK);
-	    i2c_stop();
+		status = i2c_read1(I2C_NACK);
+	    //i2c_stop();
    		// check for failure due to poll limit reached
    		if (poll_count >= DS2482_OW_POLL_LIMIT)
    		{
@@ -128,13 +128,13 @@ uint8_t OW_touch_bit(uint8_t sendbit, uint8_t addr)
 		i2c_rep_start(addr | I2C_READ);
    		// loop checking 1WB bit for completion of 1-Wire operation 
    		// abort if poll limit reached
-		status = i2c_read(I2C_ACK); // Read byte
+		status = i2c_read1(I2C_ACK); // Read byte
 	    do
 	    {
-	      if (status & STATUS_1WB) status = i2c_read(I2C_ACK);
+	      if (status & STATUS_1WB) status = i2c_read1(I2C_ACK);
 	    }
 	    while ((status & STATUS_1WB) && (poll_count++ < DS2482_OW_POLL_LIMIT));
-	    status = i2c_read(I2C_NACK);
+	    status = i2c_read1(I2C_NACK);
 	    i2c_stop();
    		// check for failure due to poll limit reached
    		if (poll_count >= DS2482_OW_POLL_LIMIT)
@@ -201,14 +201,14 @@ bool OW_write_byte(uint8_t sendbyte, uint8_t addr)
 	   i2c_rep_start(addr | I2C_READ);
    	   // loop checking 1WB bit for completion of 1-Wire operation 
    	   // abort if poll limit reached
-	   status = i2c_read(I2C_ACK); // Read byte
+	   status = i2c_read1(I2C_ACK); // Read byte
 	   do
 	   {
-	     if (status & STATUS_1WB) status = i2c_read(I2C_ACK);
+	     if (status & STATUS_1WB) status = i2c_read1(I2C_ACK);
 	   }
 	   while ((status & STATUS_1WB) && (poll_count++ < DS2482_OW_POLL_LIMIT));
-	   status = i2c_read(I2C_NACK);
-	   i2c_stop();
+	   status = i2c_read1(I2C_NACK);
+	   //i2c_stop();
    	   // check for failure due to poll limit reached
    	   if (poll_count >= DS2482_OW_POLL_LIMIT)
    	   {
@@ -246,13 +246,13 @@ uint8_t OW_read_byte(uint8_t addr)
 	   i2c_rep_start(addr | I2C_READ);
    	   // loop checking 1WB bit for completion of 1-Wire operation 
    	   // abort if poll limit reached
-	   status = i2c_read(I2C_ACK); // Read byte
+	   status = i2c_read1(I2C_ACK); // Read byte
 	   do
 	   {
-	     if (status & STATUS_1WB) status = i2c_read(I2C_ACK);
+	     if (status & STATUS_1WB) status = i2c_read1(I2C_ACK);
 	   }
 	   while ((status & STATUS_1WB) && (poll_count++ < DS2482_OW_POLL_LIMIT));
-	   status = i2c_read(I2C_NACK);
+	   status = i2c_read1(I2C_NACK);
    	   // check for failure due to poll limit reached
    	   if (poll_count >= DS2482_OW_POLL_LIMIT)
    	   {
@@ -263,8 +263,8 @@ uint8_t OW_read_byte(uint8_t addr)
 	   i2c_write(CMD_SRP); // write register address
 	   i2c_write(0xE1);    // write register address
 	   i2c_rep_start(addr | I2C_READ);
-	   data = i2c_read(I2C_NACK);	
-	   i2c_stop();
+	   data = i2c_read1(I2C_NACK);	
+	   //i2c_stop();
    	   return data;
 	} // if
 	else return false;
@@ -592,12 +592,11 @@ uint8_t ds18b20_start_conversion(uint8_t i2c_addr)
 // Read a temperature from the DS18B20. At the highest resolution
 // (12-bit, default at power-up), it takes approx. 750 msec.
 //
-//     i2c_addr : DS2482 base address where DS18B20 is connection to
-// Return TRUE  : device found, conversion started
-//        FALSE : device not found
-// Variables:
-//      dvc : THLT = Read from the HLT DS18B20 sensor
-//            TMLT = Read from the MLT DS18B20 sensor
+//     i2c_addr : DS2482 base address where DS18B20 is connected to
+//          *err: true:  device not found
+//                false: device found, conversion started
+//           s2 : true : only read first 2 bytes of scratchpad
+//                false: read all 8 bytes and check crc
 // Returns  : The temperature from the DS18B20 in a signed Q8.7 format.
 //            Q8.7 is chosen here for accuracy reasons when filtering.
 //--------------------------------------------------------------------------

@@ -5,7 +5,7 @@
 // Author : Emile
 // File   : $Id$
 //-----------------------------------------------------------------------------
-#include <stdint.h>
+#include "stdint.h"
 #include <stdbool.h>
 
 #define OW_SEARCH_ROM_CMD        (0xF0)
